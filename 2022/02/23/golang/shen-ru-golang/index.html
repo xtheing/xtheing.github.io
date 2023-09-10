@@ -1,0 +1,1885 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="深入golang, 幽狼的博客">
+    <meta name="description" content="无论处境，泰然处之">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>深入golang | 幽狼的博客</title>
+    <link rel="icon" type="image/png" href="/auther2.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/auther2.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">幽狼的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>书单</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/games">
+          
+          <i class="fas fa-file-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>游戏</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/auther2.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">幽狼的博客</div>
+        <div class="logo-desc">
+            
+            无论处境，泰然处之
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>书单</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/games " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-file-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>游戏</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/31.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">深入golang</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+        margin: 0.5rem 0px 0rem 0px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-02-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-09-10
+                </div>
+                
+
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="深入golnag"><a href="#深入golnag" class="headerlink" title="深入golnag"></a>深入golnag</h1><h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>一个比特可以是0也可以是1，8个比特组成一个字节，可以是0~255，组合起来就可以表示更大的数字。</p>
+<p>字符集用来表示字符，历史有ASCII(1967),GB2312(1980),BIG5(1984), </p>
+<p>在表示存储字符的时候发生一个问题，就是表示的字符不能简单的拼接起来，计算机不知道如何划分边界，从而不知道需要表示的字符，如下图。</p>
+<p><img src="https://s2.loli.net/2022/02/09/cAzkRerYpUqLV5g.png" alt="image-20220209150249826"></p>
+<p>定长编码</p>
+<p><img src="https://s2.loli.net/2022/02/09/2PrGy5jKp493Bn7.png" alt="image-20220209150925889"></p>
+<p>变长编码</p>
+<p>开头表示需要占用几个字节，比如1110开头需要占用三个字节，后面的10开头表示一个字节，后面紧跟的是编码内容。也就是utf-8的编码模式。</p>
+<p><img src="https://s2.loli.net/2022/02/09/8NXLqr3GFWjUB6m.png" alt="image-20220209151249671"></p>
+<p>golang中的string。</p>
+<p>在c语言中内容的末尾会有一个标识符，<code>\0</code>，但是也限制了内容中不可以出现这个标识符，所以go语言中没有采用这样的标识符。而是在起始位置的后面多存一个字节长度个数，所以能找到存储内容的开头和结尾。</p>
+<p><img src="https://s2.loli.net/2022/02/09/RrEnMe8jID9tTm4.png" alt="image-20220209151907094"></p>
+<p>在go语言中可以读取字符串的内容，但是无法修改字符串的内容，这一点和python有很大的区别。</p>
+<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>slice有三个部分组成，</p>
+<ul>
+<li>第一部分元素存哪里</li>
+<li>第二部分存了多少个元素</li>
+<li>第三部分可以存多少个元素</li>
+</ul>
+<h3 id="make声明"><a href="#make声明" class="headerlink" title="make声明"></a>make声明</h3><p>如果声明一个数组使用make </p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> ints <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+ints <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>ints<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+ints<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment">// 这里的ints中的data没有起始位置所以为nil</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/09/mgh6R31kyAwT9OH.png" alt="image-20220209154939572"></p>
+<h3 id="new声明"><a href="#new声明" class="headerlink" title="new声明"></a>new声明</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go">ps <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>不负责底层数组的分配，这里的ps就是data的地址。</p>
+<p>没有分配地址可以通过append函数添加元素分配地址。</p>
+<p><img src="https://s2.loli.net/2022/02/09/KG3SXrfUEqaObMh.png" alt="image-20220209155706768"></p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组就是同种类型的元素一个挨一个的存储，int型的slice底层就是int数组，string型的slice 底层就是 string的数组。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">arr <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">&#125;</span> <span class="token comment">// 数组容量声明了就不能变了</span>
+<span class="token keyword">var</span> s1 <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span>  <span class="token comment">// slice 可以共用同一个底层数组</span>
+<span class="token keyword">var</span> s2 <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span> <span class="token comment">//[1 2 3]</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span> <span class="token comment">//[7 8 9]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="slice扩容规则"><a href="#slice扩容规则" class="headerlink" title="slice扩容规则"></a>slice扩容规则</h4><p>第一步，预告扩容后的容量newCap，</p>
+<p><img src="https://s2.loli.net/2022/02/09/7SwoHUh2P4XqmNx.png" alt="image-20220209160755024"></p>
+<p>第二步，newCap个元素需要多大内存</p>
+<p>在很多的编程语言中，申请分配内存并不是直接和操作系统交涉，而是和语言自身实现的内存管理模块，他会提前向操作系统申请一批内存，分成常用的规格管理起来。</p>
+<p><img src="https://s2.loli.net/2022/02/09/mT5vzojpfgx6wQL.png" alt="image-20220209161147137"></p>
+<p>第三步，将预估申请的内存匹配到合适的内存规格</p>
+<p>例子</p>
+<p><img src="https://s2.loli.net/2022/02/09/CSGM7Xb84kwYLZt.png" alt="image-20220209161617019"></p>
+<p>第一步预估，添加一个元素至少需要到4，翻倍容量大于4，小于1024，所以预估容量为6。</p>
+<p>第二步，预估容量乘以元素大小，为96字节、</p>
+<p>第三步，匹配到的内存规格为96字节，所以最终扩容后容量为6</p>
+<h2 id="结构体和内存对齐"><a href="#结构体和内存对齐" class="headerlink" title="结构体和内存对齐"></a>结构体和内存对齐</h2><p>如果cpu需要读取内存数据，需要通过地址总线把地址传输给内存，内存准备好数据输出到数据总线交给cpu。</p>
+<p>如果地址总线只有8根，那这个地址只能表示0~255的地址，所以256就是8根地址总线最大的寻址空间，如果要使用更大的内存就需要更宽的地址总线，例如32位的地址总线就可以寻址4G的内存。所以如果想每次操作4字节就需要32位的数据总线，如果是8字节就需要64位的地址总线。这里每次操作的字节数就是所谓的机器字长。</p>
+<p><img src="https://s2.loli.net/2022/02/09/wiKzaTMZI3otJVQ.png" alt="image-20220209162550859"></p>
+<p>一个内存条一面是一个rank，一面有很多的颗粒为chip，一个颗粒里面有8个banks，在bank中就可以通过选择行列来定位地址。这样可以组成逻辑上的8个字节。</p>
+<p><img src="https://s2.loli.net/2022/02/09/wTCnUfOkShq3ZjG.png" alt="image-20220209162813789"></p>
+<p>每个bank上表示的字节不同，组成我们逻辑上的8个字节。</p>
+<p><img src="https://s2.loli.net/2022/02/09/wZAyTt7eC6mWYNK.png" alt="image-20220209163126433"></p>
+<p>为了保证程序的高效运行，编译器会把各种类型的数据安排到合适的地址，并占用合适的长度，也就是内存对齐，每种类型的对齐值就是它的对齐边界。内存对齐要求数据存储地址，以及占用的字节数都要是它对齐边界的倍数， 这里int32只能从4开始，不能从2开始。</p>
+<p><img src="https://s2.loli.net/2022/02/09/xd6BGkZW3zlnhFL.png" alt="image-20220209163556324"></p>
+<p>！！！未完全理解</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>map的常规理解</p>
+<p><img src="https://s2.loli.net/2022/02/09/gIJ3Rk962pbiF1h.png" alt="image-20220209172334700"></p>
+<p>go语言中</p>
+<p>map类型的变量本质上是一个指针指向hmap结构体 </p>
+<p><img src="https://s2.loli.net/2022/02/09/tDyjwgqxKm2W1So.png" alt="image-20220209173305708"></p>
+<h3 id="bmap的结构"><a href="#bmap的结构" class="headerlink" title="bmap的结构"></a>bmap的结构</h3><p>一个桶里可以放8个键值对，为了让内存更加紧凑8个key放一起，8个value放一起，8个key的前面是8个tophash，每个tophash都是对应哈希值的高8位。最后是一个bmap类型的指针，指向一个溢出桶，溢出桶的内存布局和常规桶是相同的， 是为了减少扩容次数而引入的，如果一个通存满了，就会往溢出桶里面存。</p>
+<p><img src="https://s2.loli.net/2022/02/09/IWD1iqacfs49G6z.png" alt="image-20220209173827731"></p>
+<p>hmap结构体的最后有一个extra的字段，指向一个mapextra结构体，里面记录的都是溢出桶相关的信息。</p>
+<p>nextoverflow指向下一个空闲溢出桶的位置overflow是一个slice记录已经使用的溢出桶的地址。noverflow记录溢出桶的数量。</p>
+<p><img src="https://s2.loli.net/2022/02/09/zEGgkaMldbBhsUc.png" alt="image-20220209174312089"></p>
+<p>例子：</p>
+<p>没有太听懂</p>
+<p><img src="https://s2.loli.net/2022/02/09/sZWtrPfIXyg8a3k.png" alt="image-20220209174935575"></p>
+<h2 id="函数调用栈（一）"><a href="#函数调用栈（一）" class="headerlink" title="函数调用栈（一）"></a>函数调用栈（一）</h2><p>我们根据编程语法定义的函数，会被编译为一堆机器指令，写入到可执行文件，程序执行的时候可执行文件加载到内存中。</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>这些机器指令对应到虚拟地址空间中，位于代码段，如果在函数中调用另一个函数，编译器就会对应生成一条call指令，程序执行到这条指令时，就会跳转到被调用函数入口处开始执行，而每个函数的最后都有一条ret指令，负责在函数结束后条回到调用处继续执行。</p>
+<p><img src="https://s2.loli.net/2022/02/10/uzJdXiTs4DKayc2.png" alt="image-20220210100718094"></p>
+<p>函数执行的时候需要有足够的内存空间，用于存放局部变量，参数等数据，这段空间对应到虚拟地址空间的栈。栈只有一个口进出，先入栈的在底，后入栈的在顶，是一个后进先出的原则。</p>
+<p>运行时栈上面的时高地址，向下增长，分配给函数的栈空间被称为函数栈帧，栈底通常称为栈基，栈顶又称为栈指针。在go语言中函数栈帧布局中，先是调用者栈基地址，然后是局部变量，然后是调用函数的返回值，最后是参数。</p>
+<p>call指令只做两件事，第一将下一条指令的地址入栈，这就是返回地址，被调用函数执行结束后会跳回到这里，第二，跳转到被调用函数入口处执行，这后面就是被调用函数的栈帧了，所有函数栈帧布局都遵循统一的约定。所以被调用者是通过栈指针加上相应的偏移来定位到每个参数和返回值的。</p>
+<p><img src="https://s2.loli.net/2022/02/10/nQeDIU9gLGuRwr4.png" alt="image-20220210110226909"></p>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>程序执行的时候cpu用特殊的寄存器来存储运行时栈基和栈指针，同时也有指令指针寄存器用于存储下一条要执行的指令地址。</p>
+<p>一般程序在编译的时候都会根据编写的代码把所有的程序按照代码编译进行入栈。但是在go语言中函数的栈帧不是这样逐步扩张的，而是一次性分配。</p>
+<p><img src="https://s2.loli.net/2022/02/10/jKvPH1ERZgp48Cd.png" alt="image-20220210113049182"></p>
+<h3 id="go语言的栈指针"><a href="#go语言的栈指针" class="headerlink" title="go语言的栈指针"></a>go语言的栈指针</h3><p>go语言在分配栈指针的时候，直接将栈指针移动到所需最大栈空间的位置，然后通过栈指针加上偏移值这种相对寻址方式使用函数栈帧，例如这里sp+16字节处存储3，sp+8字节处存储4.</p>
+<p><img src="https://s2.loli.net/2022/02/10/BGOTw874diWlak2.png" alt="image-20220210113549934"></p>
+<h3 id="go栈空间"><a href="#go栈空间" class="headerlink" title="go栈空间"></a>go栈空间</h3><p>一次分配主要是为了避免栈访问越界，如果初始分配的栈空间就这么大，如果函数栈是逐步扩张的，执行期间就可能发生栈的访问越界。函数的栈帧的大小在编译的时候是可以确定的，所以go语言的编译器会在函数的头部插入检测代码，如果发现需要进行“栈增长”，就会另外分配一段足够大的栈空间，并把原来的数据拷过来，原来的栈空间就释放了。</p>
+<p><img src="https://s2.loli.net/2022/02/10/z4k5aAGmLrESjMg.png" alt="image-20220210114157631"></p>
+<h3 id="go函数的call指令和ret指令"><a href="#go函数的call指令和ret指令" class="headerlink" title="go函数的call指令和ret指令"></a>go函数的call指令和ret指令</h3><p>一个函数A在a1处调用b1处的函数B，在跳转前，到了call指令这里作用有两点，第一把返回地址a2入栈保存起来，第二跳转到指令地址b1处，call指令就结束了，函数B就开始执行，这里是一个相对寻址。</p>
+<p><img src="https://s2.loli.net/2022/02/10/tQnWD2LipbI3fyJ.png" alt="image-20220210114800037"></p>
+<p>b1先分配足够大栈帧，所以栈指针挪到s7这里，b2这条指令要把调用者栈基s1存到sp+16字节的地方，接下来是b3，sp+16字节处，也就是函数B的栈基，把他存入bp寄存器，接下来就是执行函数B剩下的指令了。</p>
+<p><img src="https://s2.loli.net/2022/02/10/FUnySiwYtjomWLJ.png" alt="image-20220210115300283"></p>
+<p>在执行ret指令前编译器还会插入两条指令，</p>
+<p>第一条，指令恢复调用者A的栈基地址，之前被存储在sp+16字节这里，第二条，释放自己的栈帧空间，分配时向下移动了多少，释放时就向上移动多少。</p>
+<p>然后就到了ret指令了。作用也是两点，第一，弹出call执行压栈的返回地址，第二，跳转到这个返回地址，这个时候就可以从a2这个地方继续执行了。</p>
+<p><img src="https://s2.loli.net/2022/02/10/cPU6QBkiwAnrXth.png" alt="image-20220210115753984"></p>
+<p>简单来说，函数通过call指令来实现跳转，而每个函数开始时会分配栈帧，结束前又会释放自己的栈帧，ret指令又会吧栈恢复到calll之前的样子。 </p>
+<p><img src="https://s2.loli.net/2022/02/10/hFLgZz2B3YKe8PR.png" alt="image-20220210135258972"></p>
+<p>通过这些指令的配合能够实现函数的层层嵌套，，函数A调用函数B，B有调用C ，C又调用D 形成下图的栈</p>
+<p><img src="https://s2.loli.net/2022/02/10/pLFRdnucg1Wr6GJ.png" alt="image-20220210135440658"></p>
+<p>如果每次调用的都是A那就形成了递归的调用栈。</p>
+<p><img src="https://s2.loli.net/2022/02/10/A7bNuYTLOiFhosc.png" alt="image-20220210135614786"></p>
+<h2 id="函数调用栈（二）：传参和返回值"><a href="#函数调用栈（二）：传参和返回值" class="headerlink" title="函数调用栈（二）：传参和返回值"></a>函数调用栈（二）：传参和返回值</h2><h3 id="有参数的情况"><a href="#有参数的情况" class="headerlink" title="有参数的情况"></a>有参数的情况</h3><p>现在写一个方法去交换传入的两个值：（失败案例）</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+<span class="token keyword">func</span> <span class="token function">swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  <span class="token comment">// 交换值的方法</span>
+	a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a<span class="token punctuation">,</span> b <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+	<span class="token function">swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>  <span class="token comment">// 问题是这里传入的是拷贝值</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment">// 输出的还是1，2，交换的是拷贝值。</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以通过函数调用栈看看问题出在哪里，</p>
+<p>先看看main函数，先分配局部变量存储空间，a=1,b=2，局部变量的后面就是给被调用函数传入的参数，需要传入两个整形参数。传参就是值的拷贝，参数的入栈顺序由右至左，先入栈第二个参数，在入栈第一个参数，返回值也是一样。调用者栈帧后面是call指令存入的返回地址，再下面分配的就是swap函数栈帧了。</p>
+<p><img src="https://s2.loli.net/2022/02/10/BOIZzExcWqgUd2f.png" alt="image-20220210141434587"></p>
+<p>当swap执行到这里的时候，需要交换两个参数的值，他的参数是拷贝的a,b值，也就是参数，交换的也是拷贝的值参数，但是返回打印的是局部变量的值。</p>
+<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>还是刚刚的例子，通过指针指向局部变量的值，修改的也是局部变量的值。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+<span class="token keyword">func</span> <span class="token function">swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token operator">*</span>a
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a<span class="token punctuation">,</span> b <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+	<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment">// 输出2，1</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>再次通过函数调用栈理解一下</p>
+<p>指针拷贝的是值地址，存储的也是值的地址。</p>
+<p><img src="https://s2.loli.net/2022/02/10/cbyQiMvNU7Z3qj2.png" alt="image-20220210141806561"></p>
+<p> 当函数执行到swap函数的时候传入值的地址，修改指向地址的参数，这一次就可以交换成功。</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>通常我们认为返回值是通过寄存器传递，但是go语言支持多返回值，所以在栈上分配返回值空间更合适，看一个例子</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+<span class="token keyword">func</span> <span class="token function">incr</span><span class="token punctuation">(</span>a <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> b <span class="token builtin">int</span>
+	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// defer函数是在整个函数执行结束之前执行。</span>
+		a<span class="token operator">++</span>
+		b<span class="token operator">++</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	a<span class="token operator">++</span>
+	b <span class="token operator">=</span> a
+	<span class="token keyword">return</span> b
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> a<span class="token punctuation">,</span> b <span class="token builtin">int</span>
+	b <span class="token operator">=</span> <span class="token function">incr</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>  <span class="token comment">// 匿名返回值的情况</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment">//输出 0,1；这里的a,b按照道理来说应该是输出 2,2才是</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/10/g7nqHAs61QN39Jm.png" alt="image-20220210143435194"></p>
+<p>注意：程序在执行defer函数之前会先进行赋值，当执行到return的时候局部变量b的值拷贝到返回值空间，然后执行defer函数，执行结束后把返回空间的值赋值给b,所以这里输出的为0，1</p>
+<h4 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h4><p>我们把这里返回值改成命名返回值：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+<span class="token keyword">func</span> <span class="token function">incr</span><span class="token punctuation">(</span>a <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  <span class="token comment">// 修改的是这里</span>
+	<span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// defer函数是在整个函数执行结束之前执行。</span>
+		a<span class="token operator">++</span>
+		b<span class="token operator">++</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	a<span class="token operator">++</span>
+	b <span class="token operator">=</span> a
+	<span class="token keyword">return</span> b
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> a<span class="token punctuation">,</span> b <span class="token builtin">int</span>
+	b <span class="token operator">=</span> <span class="token function">incr</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token comment">// 输出 0,2</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在函数栈的理解下是怎样运行的呢？</p>
+<p>main函数的栈帧和上一个例子完全相同，但是到incr函数栈帧这里，没有局部变量，b就是返回空间的值。这里最终输出 0,2</p>
+<p><img src="https://s2.loli.net/2022/02/10/Zixzo4hnFGpuTWL.png" alt="image-20220210145105314"></p>
+<h3 id="调用多个函数的问题"><a href="#调用多个函数的问题" class="headerlink" title="调用多个函数的问题"></a>调用多个函数的问题</h3><p>如果一个函数调用了多个函数，我们知道不同的函数占用的栈空间是不同的，go语言中函数栈帧是一次性分配的，如果局部变量占一点，后面需要以最大的参数返回值空间为标准来分配空间，才能满足所有被调用函数的需求，所有如果遇到占用空间少的函数时，是通过栈指针相对寻址自己的参数和返回值 。</p>
+<p><img src="https://s2.loli.net/2022/02/10/AqWkuCTFPjKgclb.png" alt="image-20220210145624786"></p>
+<h2 id="go闭包"><a href="#go闭包" class="headerlink" title="go闭包"></a>go闭包</h2><p>在go语言中函数就是头等对象，可以作为参数传递，可以做函数的返回值，也可以绑定到变量。go语言称这样的参数、返回值或变量为<code>function value</code> 。</p>
+<p>函数的指令在编译期间生成，而function value 本质上是一个指针，但是并不直接指向函数指令入口，而是指向一个<code>runtime.funcval</code>结构体，这个结构体里只有一个地址，就是这个函数指令的入口地址。</p>
+<p><img src="https://s2.loli.net/2022/02/10/km2zHYyudw6C4nV.png" alt="image-20220210150241085"></p>
+<p>例子：</p>
+<p>函数A赋值给f1和f2，这个时候编译器会做出优化，让f1和f2共用一个<code>funcval</code>结构体。f1和f2本身存储的是addr2执行起始地址，找到addr1为<code>funcval</code>结构体，拿到函数入口地址然后跳转执行，这里是一个二级指针来进行的调用。</p>
+<p><img src="https://s2.loli.net/2022/02/10/PxRWsGtd9DKMkLH.png" alt="image-20220210151425488"></p>
+<p>使用二级指针主要是为了处理闭包的情况。</p>
+<h2 id="go方法"><a href="#go方法" class="headerlink" title="go方法"></a>go方法</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+<span class="token comment">// 定义类型A</span>
+<span class="token keyword">type</span> A <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	name <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 关联一个方法</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>a A<span class="token punctuation">)</span> <span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	a<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Hi "</span> <span class="token operator">+</span> a<span class="token punctuation">.</span>name
+	<span class="token keyword">return</span> a<span class="token punctuation">.</span>name
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> A<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//就可以通过这个类型A的变量来调用这个方法，实际上和下面的调用方法是一样的。</span>
+	<span class="token comment">// 输出 Hi eggo</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>A<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 这里是方法的接受者，</span>
+    <span class="token comment">// 输出 Hi eggo</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/21/CqfOd6rBYGytLc9.png" alt="image-20220221151051072"></p>
+<p>go语言中函数类型只和参数与返回值相关</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">NameOfA</span><span class="token punctuation">(</span>a A<span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	a<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Hi!"</span> <span class="token operator">+</span> a<span class="token punctuation">.</span>name
+	<span class="token keyword">return</span> a<span class="token punctuation">.</span>name
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	t1 <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>A<span class="token punctuation">.</span>Name<span class="token punctuation">)</span>
+	t2 <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>NameOfA<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> t2<span class="token punctuation">)</span> <span class="token comment">// true，证明了方法本质上就是普通的函数</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>指针</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 定义类型A</span>
+<span class="token keyword">type</span> A <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	name <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 关联一个方法</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>pa <span class="token operator">*</span>A<span class="token punctuation">)</span> <span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	pa<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"Hi "</span> <span class="token operator">+</span> pa<span class="token punctuation">.</span>name
+	<span class="token keyword">return</span> pa<span class="token punctuation">.</span>name
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> A<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+	pa <span class="token operator">:=</span> <span class="token operator">&amp;</span>a
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// 输出 Hi eggo 因为是打印的局部变量的存储的值。局部变量存储的值</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>pa<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 Hi Hi eggo  这里打印的是局部变量地址指向的内容。局部变量存储的地址。</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/21/MHcDQpNvizYXbUl.png" alt="image-20220221151157157"></p>
+<p>如果在编译期间不能拿到地址的字面量，不能通过语法糖来进行转换了。所以不能通过编译。</p>
+<p><img src="https://s2.loli.net/2022/02/21/g4r2YpNyc1eD8xb.png" alt="image-20220221151238102"></p>
+<h3 id="方法赋给变量"><a href="#方法赋给变量" class="headerlink" title="方法赋给变量"></a>方法赋给变量</h3><p>go语言中函数作为变量、参数、返回值时都是以<code>Function Value</code>的形式存在的。</p>
+<p>闭包也只是通过捕获列表的<code>Function Value</code>而已</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 定义类型A</span>
+<span class="token keyword">type</span> A <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	name <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 关联一个方法</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>a A<span class="token punctuation">)</span> <span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> a<span class="token punctuation">.</span>name
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> A<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+	f1 <span class="token operator">:=</span> A<span class="token punctuation">.</span>GetName <span class="token comment">//f1就是一个方法表达式实际上和其他的代码</span>
+	<span class="token function">f1</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+	f2 <span class="token operator">:=</span> a<span class="token punctuation">.</span>GetName <span class="token comment">// 方法变量，</span>
+    <span class="token comment">// 这里就相当于形成了双指针，形成了闭包。</span>
+    <span class="token comment">// 这里的f2只是一个局部变量，但是和f1的生命周期是一致的，所以编译器会做出优化，把它转化为类型A的方法调用并传入a作为参数</span>
+    <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>f1实际上和这段代码相同</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">GetName</span><span class="token punctuation">(</span>a A<span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> a<span class="token punctuation">.</span>name
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> A<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+	f1 <span class="token operator">:=</span> GetName
+	<span class="token function">f1</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所以f1本质上其实也是一个 <code>Function Value</code> 也就是一个<code>funcval</code>结构体的指针</p>
+<p>f2是是一个方法变量</p>
+<h3 id="再举一个例子"><a href="#再举一个例子" class="headerlink" title="再举一个例子"></a>再举一个例子</h3><p><img src="https://s2.loli.net/2022/02/21/iYnckVw4gUj9aNT.png" alt="image-20220221152700476"></p>
+<p>这里的f3是一个闭包结构</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// 定义类型A</span>
+<span class="token keyword">type</span> A <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	name <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">// 关联一个方法</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>a A<span class="token punctuation">)</span> <span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> a<span class="token punctuation">.</span>name
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">GetFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> A<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo in GetFunc"</span><span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span>GetName <span class="token comment">// 这里返回的其实就是A.GetName(a)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> A<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo in main"</span><span class="token punctuation">&#125;</span>
+	f2 <span class="token operator">:=</span> a<span class="token punctuation">.</span>GetName   <span class="token comment">// 可以看到和GetFunc是一致的</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// eggo in main</span>
+	f3 <span class="token operator">:=</span> <span class="token function">GetFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// eggo in GetFunc</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>总结：从本质上来讲，方法表达式和方法变量都是Function Value</p>
+<h2 id="脱胎换股的defer"><a href="#脱胎换股的defer" class="headerlink" title="脱胎换股的defer"></a>脱胎换股的defer</h2><p>defer会在函数返回之前倒叙执行</p>
+<p>defer执行对应两部分内容，<code>deferproc</code>负责把要执行的函数信息保存起来，我们称之为 <code>defer</code>注册，<code>deferproc</code>函数会返回0。</p>
+<p><code>defer</code>注册后程序会继续执行后面的逻辑，直到返回之前通过<code>deferreturn</code>执行注册的<code>defer</code>函数。正式因为先注册，后调用，才实现了defer延迟执行的效果。（可能是编译器，编译的结果）</p>
+<p><img src="https://s2.loli.net/2022/02/21/RFW8tqZ6mVMLpxY.png" alt="image-20220221154357006"></p>
+<p><code>defer</code>信息会注册到一个链表，而当前执行的 <code>goroutine</code>持有这个链表的头指针，每个goroutine在运行时都有一个对应的结构体 <code>g</code>其中有一个字段指向<code>defer</code>链表头，而 <code>defer</code>链表连起来的是一个一个 <code>_defer结构体</code>，新注册的<code>defer</code>会添加到链表的头，执行的时候也是从头开始，所以 <code>defer</code>才会表现为倒序执行。</p>
+<p><img src="https://s2.loli.net/2022/02/21/fYE5djKQe93IDk6.png" alt="image-20220221155542711"></p>
+<h3 id="defer结构体"><a href="#defer结构体" class="headerlink" title="defer结构体"></a>defer结构体</h3><p><img src="https://s2.loli.net/2022/02/21/FS4dEwZGzmtBjHW.png" alt="image-20220221160338130"></p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> _defer <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	siz     <span class="token builtin">int32</span>    <span class="token comment">// 参数和返回值共占用多少字节</span>
+	started <span class="token builtin">bool</span>     <span class="token comment">// 是否已经执行</span>
+	sp      <span class="token builtin">uintptr</span>  <span class="token comment">// 注册这个defer的函数栈指针</span>
+	pc      <span class="token builtin">uintptr</span>  <span class="token comment">// deferproc的返回地址</span>
+	fn      <span class="token operator">*</span>funcval <span class="token comment">// 是要注册的function value</span>
+	_panic  <span class="token operator">*</span>_panic
+	link    <span class="token operator">*</span>_defer <span class="token comment">//连接到前一个注册的_defer结构体</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="先注册，后执行"><a href="#先注册，后执行" class="headerlink" title="先注册，后执行"></a>先注册，后执行</h3><p>例子：<code>deferproc</code>函数执行时，需要堆分配一段空间，用于存放defer结构体，添加完成后这个 <code>_defer</code>结构体就被添加到 <code>defer</code>链表头，<code>deferproc</code>注册结束。</p>
+<p><img src="https://s2.loli.net/2022/02/21/zRCoIBPNML6UKpi.png" alt="image-20220221160931262"></p>
+<p>实际上go语言会预分配不同规格的<code>defer</code>池，执行的时候会从空闲的 <code>_defer</code>中取出一个来用。没有合适的就重新分配。</p>
+<p><img src="https://s2.loli.net/2022/02/21/mShlyuLrgvQCO3o.png" alt="image-20220221161010642"></p>
+<h3 id="defer执行例子："><a href="#defer执行例子：" class="headerlink" title="defer执行例子："></a>defer执行例子：</h3><p>defer注册函数是A，defer链表存储的也是A的funcval指针，因为注册的时候需要保存A的参数，就必须拿到B的返回值，所以这里的B是顺序执行。B返回2</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">B</span><span class="token punctuation">(</span>a <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+	a<span class="token operator">++</span>
+	<span class="token keyword">return</span> a
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">A</span><span class="token punctuation">(</span>a <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a<span class="token operator">++</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 3</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> <span class="token number">1</span>
+	<span class="token keyword">defer</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token function">B</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//defer注册函数是A，defer链表存储的也是A的funcval指针，因为注册的时候需要保存A的参数，就必须拿到B的返回值，所以这里的B是顺序执行。B返回2</span>
+	a<span class="token operator">++</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/21/8qzcgSvwxNosIpm.png" alt="image-20220221163805527"></p>
+<p>这里大致讲解了go 1.12 版本的 <code>defer</code>基本的设计思路，存在比较明显的问题，就是慢。</p>
+<p>第一个原因是defer结构体的堆分配，即使有预分配的<code>deferpool</code>，也需要去堆上获取与释放，而且参数还要在堆上来回拷贝。</p>
+<p>第二个原因是使用链表注册<code>defer</code>信息，而链表本身的操作就比较慢，所以在1.13和1.14中进行了优化。</p>
+<h2 id="脱胎换股的defer（二）"><a href="#脱胎换股的defer（二）" class="headerlink" title="脱胎换股的defer（二）"></a>脱胎换股的defer（二）</h2><p>这里可以进阶看</p>
+<p>1.13版本的defer性能提升了30%</p>
+<p>1.14版本提升了一个数量级，代价就是，<code>panic</code>变得更慢了，但是 <code>panic</code>发生的几率要比 <code>defer</code>低。</p>
+<p><img src="https://s2.loli.net/2022/02/21/LQMRUx6GNS2JCBd.png" alt="image-20220221164944559"></p>
+<h2 id="panic和recover"><a href="#panic和recover" class="headerlink" title="panic和recover"></a>panic和recover</h2><p>经过上面的学习已经知道，在当前执行的<code>goroutine</code>中有一个 <code>defer</code>链表的头指针，其实它也有一个<code>panic</code>链表头指针。基本和<code>defer</code>一样</p>
+<p><img src="https://s2.loli.net/2022/02/21/bxLAvFkCwsVDWaq.png" alt="image-20220221170805088"></p>
+<p>例子：</p>
+<p>执行到箭头这里时发生了<code>panic</code>后面的代码就不会执行了，而是进入<code>panic</code>处理逻辑，</p>
+<p><img src="https://s2.loli.net/2022/02/21/u72obcT6mwPWVHa.png" alt="image-20220221170941435"></p>
+<p>这里会在panic链表中增加一项，这里记为panicA就是当前执行的<code>panic</code>，然后执行<code>defer</code>链表。</p>
+<p><img src="https://s2.loli.net/2022/02/21/2EhmRL6xMd3WSvO.png" alt="image-20220221171135760"></p>
+<p><code>panic</code>执行<code>defer</code>时会把<code>started</code>置为<code>true</code>，并把<code>_panic</code>字段指向当前执行的<code>panic</code></p>
+<p><img src="https://s2.loli.net/2022/02/21/T37kq6dvPYOUhDV.png" alt="image-20220221171408586"></p>
+<p>如果函数A2能正常结束，就继续执行下一个<code>defer</code>，如果再次发生<code>panic</code>，后面的代码也不会执行，然后再<code>panic</code>链表头插入一个新的<code>panic</code></p>
+<p><img src="https://s2.loli.net/2022/02/21/qSV6YIoxDlujPkm.png" alt="image-20220221171441504"></p>
+<p><img src="https://s2.loli.net/2022/02/21/qMhtkW45njSGac1.png" alt="image-20220221171747445"></p>
+<p>这个时候<code>panicA</code>被终止，A1这一项也要被移除，<code>defer</code>链表为空。接下来就该打印<code>panic</code>异常信息了。打印信息时是从<code>panic</code>发生的顺序逐个输出。</p>
+<p>关注点：</p>
+<ul>
+<li>第一个是panic执行defer函数的方式，是先标记，后释放，目的是为了终止之前发生的panic</li>
+<li>第二个是异常信息的输出方式，所有还在panic链表上的项都会被输出，顺序与panic发生的顺序一致。</li>
+</ul>
+<h3 id="panic结构体"><a href="#panic结构体" class="headerlink" title="_panic结构体"></a>_panic结构体</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> _panic <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	argp      unsafe<span class="token punctuation">.</span>Pointer <span class="token comment">// 存储当前要执行的defer的函数参数地址</span>
+	arg       <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>    <span class="token comment">// panic函数自己的参数</span>
+	link      <span class="token operator">*</span>_panic        <span class="token comment">// 链接到之前发生的panic</span>
+	recovered <span class="token builtin">bool</span>           <span class="token comment">// 表示panic是否被恢复</span>
+	aborted   <span class="token builtin">bool</span>           <span class="token comment">// 标识panic是否被终止</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>panic打印信息时会从链表尾部开始，也就是按照<code>panic</code>发生的顺序逐个输出。</p>
+<h3 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h3><p>recover函数逻辑很简单，它只做一件事，就是把当前执行的<code>panic</code>置为已恢复，也就是把它的<code>recovered</code>字段置换为<code>true</code>其他的都不管。</p>
+<p>这里还是需要多听听。 </p>
+<h2 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> T <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	name <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>t T<span class="token punctuation">)</span> <span class="token function">F1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	t <span class="token operator">:=</span> T<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span> <span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+	t<span class="token punctuation">.</span><span class="token function">F1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 方法本质上就是函数</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>方法本质上就是函数，只不过在调用时接受者会作为第一个参数传入，在编译的时候没有问题，但是在执行的时候反射、接口动态派发、类型断言，这些语言特性或者机制如何动态的获取数据类型信息呢？</p>
+<p>我们定义的类型一般都是自定义类型，都需要定义元素信息，成为类型元数据，每种类型的元数据都是全局唯一的，一起构成了go语言的“类型系统”。</p>
+<p>每个类型元数据都需要记录类型名称、大小、对其边界、是否是自定义类型等，是每个元数据都需要记录的信息，所以都放到了<code>runtime._type</code>结构体中作为每个类型元数据的<code>Header</code>, 在<code>_type</code>之后存储的才是额外需要描述的信息，使用<code>*_type</code>可以指向其存储的元素的类型元数据如果是<code>string</code>就指向<code>string</code>类型的元数据。</p>
+<p>如果是自定义类型，后面还会有一个<code>uncommontype</code>结构体</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> _type <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	size       <span class="token builtin">uintptr</span>
+	ptrdata    <span class="token builtin">uintptr</span>
+	hash       <span class="token builtin">uint32</span>
+	tflag      tflag
+	align      <span class="token builtin">uint8</span>
+	fieldalign <span class="token builtin">uint8</span>
+	kind       <span class="token builtin">uint8</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">type</span> slicetype <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	typ  _type
+	elem <span class="token operator">*</span>_type <span class="token comment">// 指向上面的类型</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 自定义类型</span>
+<span class="token keyword">type</span> uncommontype <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	pkgpath nameOff <span class="token comment">// 记录类型所在的包路径</span>
+	mocount <span class="token builtin">uint16</span>  <span class="token comment">//记录了类型关联到多少个方法</span>
+	moff    <span class="token builtin">uint32</span>  <span class="token comment">// 记录了这些方法元数据组成的数组的偏移值</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="自定义类型例子："><a href="#自定义类型例子：" class="headerlink" title="自定义类型例子："></a>自定义类型例子：</h3><p>我们给 <code>myslice</code>自定义了<code>Len</code>和<code>Cap</code>两个方法 </p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> myslice <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>ms myslice<span class="token punctuation">)</span> <span class="token function">Len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>ms<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>ms myslice<span class="token punctuation">)</span> <span class="token function">Cap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">cap</span><span class="token punctuation">(</span>ms<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过<code>uncommontype</code>我们可以通过<code>moff</code>找到方法元数据在哪里，比如方法<code>Len</code>地址是<code>addrA</code>那地址加上<code>moff</code>偏移值就可以找到<code>myslice</code>关联的方法元数据数组。</p>
+<p><img src="https://s2.loli.net/2022/02/22/LQeG7IO8SoNpctY.png" alt="image-20220222103018273"></p>
+<p>使用类型元数据，看看其他的写法，</p>
+<p>例子：</p>
+<p><code>MyType1</code> 这种写法叫做给<code>int32</code>类型起个别名，实际上<code>MyType1</code>和<code>int32</code>会关联到同一个类型元数据。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> MyType1 <span class="token operator">=</span> <span class="token builtin">int32</span> <span class="token comment">//这种写法叫做给int32类型起个别名</span>
+<span class="token keyword">type</span> MyType2 <span class="token builtin">int32</span> <span class="token comment">//这种写法是基于已有类型创建一个新类型，相当于自立门户。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/22/O1GxbWS4atA5sQB.png" alt="image-20220222103655321"></p>
+<h2 id="接口-interface"><a href="#接口-interface" class="headerlink" title="接口(interface)"></a>接口(interface)</h2><h3 id="空接口"><a href="#空接口" class="headerlink" title="空接口"></a>空接口</h3><p>先看看空接口，空接口类型可以接受任意类型的数据，只要记录这个数据在哪里，是什么类型的就足够了。</p>
+<p><code>_type</code>指向接口的动态类型元数据，<code>data</code>指向接口的动态值</p>
+<p>空接口在赋值以前<code>_type</code>和<code>data</code>都是<code>nil</code></p>
+<p><img src="https://s2.loli.net/2022/02/22/mrxDfRC2agUcWsi.png" alt="image-20220222105043601"></p>
+<p><img src="https://s2.loli.net/2022/02/22/ZUOyLKp4A7lanHV.png" alt="image-20220222105531060"></p>
+<h3 id="非空接口"><a href="#非空接口" class="headerlink" title="非空接口"></a>非空接口</h3><p>非空接口就是有方法列表的接口类型，一个变量想要赋值给一个非空接口类型，必须要实现该接口要求的所有方法才行</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> iface <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	tab  <span class="token operator">*</span>itab <span class="token comment">// 指向 itab 结构体</span>
+	data unsafe<span class="token punctuation">.</span>Pointer
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">type</span> itab <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	inter <span class="token operator">*</span>interfacetype <span class="token comment">// 指向 interface 接口元数据</span>
+	_type <span class="token operator">*</span>_type         <span class="token comment">// 指向接口的动态类型元数据</span>
+	hash  <span class="token builtin">uint32</span>         <span class="token comment">// 从动态类型元数据中拷贝来的类型哈希值，用于快速判断类型是否相等时使用</span>
+	<span class="token boolean">_</span>     <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token builtin">byte</span>
+	fun   <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token builtin">uintptr</span> <span class="token comment">// 方法地址数组</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">type</span> interfacetype <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	typ     _type
+	pkgpath name
+	mhdr    <span class="token punctuation">[</span><span class="token punctuation">]</span>imethod <span class="token comment">// 接口要求的方法列表就记录在这里</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/22/nm6BpsWg9PNxAwj.png" alt="image-20220222110525975"></p>
+<p>例子：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> rw io<span class="token punctuation">.</span>ReadWriter
+f<span class="token punctuation">,</span><span class="token boolean">_</span><span class="token operator">:=</span>os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"eggo.txt"</span><span class="token punctuation">)</span>
+rw <span class="token operator">=</span> f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在赋值以前<code>data</code>为<code>nil</code>，<code>tab</code>也为<code>nil</code>。如果把<code>f</code>赋值给<code>rw</code>此时<code>rw</code>的动态值就是<code>f</code>而<code>tab</code>也会指向一个<code>itab</code>的结构体。</p>
+<p><img src="https://s2.loli.net/2022/02/22/J2ab8YIzQe7mOyE.png" alt="image-20220222115613837"></p>
+<h3 id="itab其他点"><a href="#itab其他点" class="headerlink" title="itab其他点"></a>itab其他点</h3><p>一点接口类型确定，动态类型确定了，那<code>itab</code>的内容就不会改变了，所以<code>itab</code>结构体一般是可复用的，go语言会把用到的<code>itab</code>结构体缓存起来，并以接口类型和动态类型的组合为<code>key</code>，以<code>itab</code>结构体指针为<code>value</code>，构造一个<code>hash</code>表用于存储<code>itab</code>表的缓存信息。</p>
+<p><img src="https://s2.loli.net/2022/02/22/yf7vpblszrDWKc3.png" alt="image-20220222142951680"></p>
+<h2 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h2><p>接口可以分为空接口和非空接口，类型断言作用在接口值之上，可以是空接口或非空接口，而断言的目标类型可以是具体类型或非空接口类型。所以可以组合出四种断言类型。</p>
+<h3 id="第一种：空接口-具体类型"><a href="#第一种：空接口-具体类型" class="headerlink" title="第一种：空接口.(具体类型)"></a>第一种：空接口.(具体类型)</h3><p>空接口.(具体类型)</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> e <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+r<span class="token punctuation">,</span> ok <span class="token operator">:=</span> e<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>os<span class="token punctuation">.</span>File<span class="token punctuation">)</span>  <span class="token comment">// e.(*os.File)是要判断e的动态类型是否是*os.File </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>其实只要确定<code>e</code>的<code>_type</code>是否指向<code>*os.File</code>的类型元数据就好了，go语言中每一种类型的元数据都是全局唯一的。</p>
+<p><img src="https://s2.loli.net/2022/02/22/LqmnosHVw9Aax2i.png" alt="image-20220222144018088"></p>
+<p>如果是</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> e <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+f<span class="token punctuation">,</span> <span class="token boolean">_</span><span class="token operator">:=</span>os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"test.go"</span><span class="token punctuation">)</span>
+e <span class="token operator">=</span> f
+r<span class="token punctuation">,</span> ok <span class="token operator">:=</span> e<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>os<span class="token punctuation">.</span>File<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/22/XyEPzBMvmNLu2kw.png" alt="image-20220222144543750"></p>
+<p><img src="https://s2.loli.net/2022/02/22/vrDjcKUgha1J4Pz.png" alt="image-20220222144514694"></p>
+<h3 id="第二种-：非空接口-具体类型"><a href="#第二种-：非空接口-具体类型" class="headerlink" title="第二种 ：非空接口.(具体类型)"></a>第二种 ：非空接口.(具体类型)</h3><p>例子</p>
+<p><code>rw.(*os.File)</code>是要判断rw的动态类型是否为<code>*os.File</code>.</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> rw io<span class="token punctuation">.</span>ReadWriter
+f<span class="token punctuation">,</span><span class="token boolean">_</span> <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"eggo.txt"</span><span class="token punctuation">)</span>
+rw <span class="token operator">=</span> f
+r<span class="token punctuation">,</span>ok <span class="token operator">:=</span> rw<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>os<span class="token punctuation">.</span>File<span class="token punctuation">)</span> <span class="token comment">// rw.(*os.File)是要判断rw的动态类型是否为*os.File</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/22/NZ91MGlLeXzqhRS.png" alt="image-20220222145242148"></p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> rw io<span class="token punctuation">.</span>ReadWriter
+f <span class="token operator">:=</span> eggo<span class="token punctuation">&#123;</span>name<span class="token punctuation">:</span><span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+rw <span class="token operator">=</span> f
+r<span class="token punctuation">,</span>ok <span class="token operator">:=</span> rw<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>os<span class="token punctuation">.</span>File<span class="token punctuation">)</span> <span class="token comment">// rw.(*os.File)是要判断rw的动态类型是否为*os.File</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/22/nx8sUQf5k9JAlvC.png" alt="image-20220222145441827"></p>
+<h3 id="第三种：空接口-非空接口"><a href="#第三种：空接口-非空接口" class="headerlink" title="第三种：空接口.(非空接口)"></a>第三种：空接口.(非空接口)</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> e <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+rw<span class="token punctuation">,</span>ok <span class="token operator">:=</span> e<span class="token punctuation">.</span><span class="token punctuation">(</span>io<span class="token punctuation">.</span>ReadWriter<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>e.(io.ReadWriter)</code>是要判断<code>e</code>的动态类型是否实现了<code>io.ReadWriter</code>接口</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> e <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+f<span class="token punctuation">,</span><span class="token boolean">_</span> <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">)</span>
+e <span class="token operator">=</span> f
+rw<span class="token punctuation">,</span>ok <span class="token operator">:=</span> e<span class="token punctuation">.</span><span class="token punctuation">(</span>io<span class="token punctuation">.</span>ReadWriter<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/02/22/AuznsJ1or9lfbj2.png" alt="image-20220222165114770"></p>
+<p>这里可以用<code>itab</code>缓存，可以先在<code>itab</code>中查找一下，如果没有<code>io.ReadWriter</code>和<code>*os.File</code>对应的<code>itab</code>结构体，再去检查<code>*os.File</code>的方法列表。如果查找到了对应的<code>itab</code>指针，也需要判断<code>itab.fun[0]</code>是否等于0，因为断言失败的类型组合其对应的<code>itab</code>结构体也会被缓存起来，只是会把<code>itab.fun[0]</code>置为0，用以标识这里的动态类型并没有实现对应的接口。</p>
+<p><img src="https://s2.loli.net/2022/02/23/UVQNcvljSRe8K7w.png" alt="image-20220223105050527"></p>
+<p>如果类型为<code>string</code>:</p>
+<p><img src="https://s2.loli.net/2022/02/23/7RNDmIbpr6OiwuH.png" alt="image-20220223105315947"></p>
+<h3 id="第四种：非空接口-非空接口"><a href="#第四种：非空接口-非空接口" class="headerlink" title="第四种：非空接口.(非空接口)"></a>第四种：非空接口.(非空接口)</h3><p>！未完需要再次听。</p>
+<h2 id="reflect反射"><a href="#reflect反射" class="headerlink" title="reflect反射"></a>reflect反射</h2><p>反射的作用就是把类型元数据暴露给用户使用</p>
+<p>介绍了<code>runtime</code>包中类型接口的结构，但是这些类型都是未导出的，所以<code>reflect</code>包中自己又定义了一套，这些类型的定义在两个包中是保持一致的。</p>
+<p><code>reflect</code>包中提供一个<code>TypeOf</code>函数用于获取一个变量的类型信息，</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">TypeOf</span><span class="token punctuation">(</span>i <span class="token keyword">interface</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span> Type <span class="token punctuation">&#123;</span> <span class="token comment">// 这里接受一个空接口类型的参数，返回一个reflect.Type类型的值</span>
+	eface <span class="token operator">:=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">*</span>emptyInterface<span class="token punctuation">)</span><span class="token punctuation">(</span>unsafe<span class="token punctuation">.</span><span class="token function">Pointer</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> toType<span class="token punctuation">&#123;</span>eface<span class="token punctuation">.</span>typ<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>例子：</p>
+<p>在<code>eggo</code>包中定义一个类型，</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> eggo
+<span class="token keyword">type</span> Eggo <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	Name <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>e Eggo<span class="token punctuation">)</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>e Eggo<span class="token punctuation">)</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在<code>main</code>包中使用这个类型。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"reflect"</span>
+	<span class="token string">"./eggo"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	a <span class="token operator">:=</span> eggo<span class="token punctuation">.</span>Eggo<span class="token punctuation">&#123;</span>Name<span class="token punctuation">:</span> <span class="token string">"eggo"</span><span class="token punctuation">&#125;</span>
+	t <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+	<span class="token comment">//Eggo 2</span>
+	<span class="token function">println</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span><span class="token function">NumMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过反射看看这个类型有多少个可以导出的方法</p>
+<p>！！！也没有看完呢</p>
+<h2 id="GPM（一）goroutine的执行过程"><a href="#GPM（一）goroutine的执行过程" class="headerlink" title="GPM（一）goroutine的执行过程"></a>GPM（一）goroutine的执行过程</h2><p>在不同平台下，程序执行的入口是不同的，在进行检查和初始化等工作后，会以<code>runtime.main</code>为执行入口创建<code>main goroutine</code>，<code>main goroutine</code>执行起来后才会调用<code>main.main</code></p>
+<p><img src="https://s2.loli.net/2022/02/23/iPIWfV6k1ZmoCLM.png" alt="image-20220223112840147"></p>
+<p>在go语言中协程对应的数据结构是<code>runtime.g</code>，工作线程对应的数据结构是<code>runtime.m</code></p>
+<p><img src="https://s2.loli.net/2022/02/23/TP2b91EuiAUqFh8.png" alt="image-20220223113104895"></p>
+<p>全局变量g0就是主协程对应的g，和其他的协程不同它的协程栈实际上是在主协程栈上分配的。全局变量m0就是主线程对应的m。g0持有m0的指针，m0里也记录着g0的指针。一开始m0上执行的协程正是g0，m0和g0就联系起来了。</p>
+<p><img src="https://s2.loli.net/2022/02/23/lcjzNKo6QO8egpW.png" alt="image-20220223113940082"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">theing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://theing.gitee.io/2022/02/23/golang/shen-ru-golang/">https://theing.gitee.io/2022/02/23/golang/shen-ru-golang/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">theing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'c9A3NJapA0GqVqdjIanTXvWV-gzGzoHsz',
+        appKey: 'siVPq9lDAGz8yClxLOmoMo6I',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '随便说点什么吧！'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/05/04/yun-wei/sed-gong-ju-chang-yong-ming-ling/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="sed工具 常用命令">
+                        
+                        <span class="card-title">sed工具 常用命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            当使用sed工具时，可以通过传递一些命令来指定文本编辑操作
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            theing
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/sed/">
+                        <span class="chip bg-color">sed</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/10/golang/golang-dui-shu-xing-jie-gou-de-shu-ju-jin-xing-bian-li/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="golang实战 对树形结构的数据进行遍历">
+                        
+                        <span class="card-title">golang实战 对树形结构的数据进行遍历</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" ">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="694251243"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.5'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m12 l12 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">theing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <!-- <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> -->
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+
+</html>

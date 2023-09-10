@@ -1,0 +1,2233 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="R语言与数据分析（二）, 幽狼的博客">
+    <meta name="description" content="无论处境，泰然处之">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>R语言与数据分析（二） | 幽狼的博客</title>
+    <link rel="icon" type="image/png" href="/auther2.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/auther2.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">幽狼的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>书单</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/games">
+          
+          <i class="fas fa-file-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>游戏</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/auther2.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">幽狼的博客</div>
+        <div class="logo-desc">
+            
+            无论处境，泰然处之
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>书单</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/games " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-file-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>游戏</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">R语言与数据分析（二）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+        margin: 0.5rem 0px 0rem 0px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">R语言数据分析</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                数据分析
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-09-10
+                </div>
+                
+
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote class="blockquote-center">
+喜欢一件事就去争取吧。
+</blockquote>
+<span id="more"></span>
+
+<h2 id="34-数据转换"><a href="#34-数据转换" class="headerlink" title="34-数据转换"></a>34-数据转换</h2><p>数据的收集和存储已经会了,这里开始数据的转换,转换后就可以分析数据了.</p>
+<p>前面介绍是向量,矩阵,数组,数据框,列表,因子,时间序列,等的增删改查</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> cars32 <span class="token operator">=</span> read.csv<span class="token punctuation">(</span><span class="token string">"mtcars.csv"</span><span class="token punctuation">)</span>
+<span class="token operator">></span> is.data.frame<span class="token punctuation">(</span>cars32<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token boolean">TRUE</span>  <span class="token comment">## 表示是一个矩阵</span>
+<span class="token operator">></span> is.data.frame<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token boolean">FALSE</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>转换为数据框</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> dstate.x77 <span class="token operator">=</span> as.data.frame<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>转换为矩阵,变为字符串类型的矩阵</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> as.matrix<span class="token punctuation">(</span>data.frame<span class="token punctuation">(</span>state.region<span class="token punctuation">,</span>state.x77<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>methods查看内容</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> methods<span class="token punctuation">(</span>is<span class="token punctuation">)</span>
+<span class="token operator">></span> methods<span class="token punctuation">(</span>as<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="向量是R种基本的数据类型-加上一个维度就是数组或者矩阵"><a href="#向量是R种基本的数据类型-加上一个维度就是数组或者矩阵" class="headerlink" title="向量是R种基本的数据类型,加上一个维度就是数组或者矩阵"></a>向量是R种基本的数据类型,加上一个维度就是数组或者矩阵</h4><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## > is.data.frame(state.x77)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token boolean">FALSE</span>
+<span class="token operator">></span> x <span class="token operator">=</span> state.abb
+<span class="token operator">></span> dim<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>
+
+<span class="token comment">## 向量变因子</span>
+<span class="token operator">></span> x <span class="token operator">=</span> state.babb
+<span class="token operator">></span> as.factor<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+<span class="token comment">## 变为列表</span>
+<span class="token operator">></span> as.list<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加一个数据框</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> state <span class="token operator">=</span> data.frame<span class="token punctuation">(</span>x<span class="token punctuation">,</span>state.region<span class="token punctuation">,</span>state.x77<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="35-数据转换-二"><a href="#35-数据转换-二" class="headerlink" title="35-数据转换(二)"></a>35-数据转换(二)</h2><p>讲一个取子集的操作</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 这是一个数据框</span>
+<span class="token operator">></span> who <span class="token operator">=</span> read.csv<span class="token punctuation">(</span><span class="token string">"WHO.csv"</span><span class="token punctuation">,</span>header <span class="token operator">=</span> T<span class="token punctuation">)</span>
+<span class="token operator">></span> who1 <span class="token operator">=</span> who<span class="token punctuation">[</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">,</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">></span> who2 <span class="token operator">=</span> who<span class="token punctuation">[</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>c<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>取出CountryID 在50到100的国家,似乎不知道怎么去理解</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> who4 <span class="token operator">=</span> who<span class="token punctuation">[</span>which<span class="token punctuation">,</span><span class="token punctuation">(</span>who<span class="token operator">$</span>CountryID <span class="token operator">></span> <span class="token number">50</span> <span class="token operator">&amp;</span> who<span class="token operator">$</span>CountryID <span class="token operator">&lt;=</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">></span> who4 <span class="token operator">=</span> subset<span class="token punctuation">(</span>who<span class="token punctuation">,</span>who<span class="token operator">$</span>CountryID <span class="token operator">></span> <span class="token number">50</span> <span class="token operator">&amp;</span> who<span class="token operator">$</span>CountryID <span class="token operator">&lt;=</span><span class="token number">100</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>sample抽样,机器学习中抽取两份样本,一份用来建模,一份用来验证模型的有效性</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?sample
+<span class="token comment">## 例子,第一个参数为是选择那个向量,第二个是要抽取的个数,replace 表示是否放回式的抽样.</span>
+<span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token operator">:</span><span class="token number">100</span>
+<span class="token operator">></span> sample<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span>replace <span class="token operator">=</span> T<span class="token punctuation">)</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">39</span> <span class="token number">23</span> <span class="token number">11</span> <span class="token number">26</span> <span class="token number">50</span> <span class="token number">86</span> <span class="token number">86</span> <span class="token number">71</span> <span class="token number">26</span>  <span class="token number">6</span> <span class="token number">10</span> <span class="token number">93</span> <span class="token number">81</span> <span class="token number">73</span> <span class="token number">74</span> <span class="token number">87</span> <span class="token number">98</span>
+<span class="token punctuation">[</span><span class="token number">18</span><span class="token punctuation">]</span>  <span class="token number">6</span> <span class="token number">17</span> <span class="token number">87</span> <span class="token number">10</span> <span class="token number">69</span> <span class="token number">51</span> <span class="token number">24</span> <span class="token number">22</span> <span class="token number">70</span> <span class="token number">33</span> <span class="token number">68</span> <span class="token number">97</span> <span class="token number">82</span>
+<span class="token operator">></span> sort<span class="token punctuation">(</span>sample<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span>replace <span class="token operator">=</span> T<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token number">8</span> <span class="token number">19</span> <span class="token number">23</span> <span class="token number">23</span> <span class="token number">28</span> <span class="token number">31</span> <span class="token number">32</span> <span class="token number">40</span> <span class="token number">40</span> <span class="token number">42</span> <span class="token number">50</span> <span class="token number">50</span> <span class="token number">50</span> <span class="token number">51</span> <span class="token number">52</span> <span class="token number">55</span> <span class="token number">58</span>
+<span class="token punctuation">[</span><span class="token number">18</span><span class="token punctuation">]</span> <span class="token number">60</span> <span class="token number">63</span> <span class="token number">70</span> <span class="token number">73</span> <span class="token number">77</span> <span class="token number">78</span> <span class="token number">83</span> <span class="token number">83</span> <span class="token number">84</span> <span class="token number">85</span> <span class="token number">89</span> <span class="token number">93</span> <span class="token number">96</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>sample对数据框进行抽样,取子集</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> who<span class="token punctuation">[</span>sample<span class="token punctuation">(</span>who<span class="token operator">$</span>CountryID<span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span>replace <span class="token operator">=</span> F<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>删除固定行的数据</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 注意逗号的位置</span>
+<span class="token operator">></span> mtcars<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">:</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token punctuation">]</span>
+
+<span class="token comment">## 清空这一行的数据</span>
+<span class="token operator">></span> mtcars<span class="token operator">$</span>mpg <span class="token operator">=</span> <span class="token keyword">NULL</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果遇到几个数据表进行汇总,这里要用到数据框的合并,可以使用cbind和rbind函数,cbind添加一列,rbind添加一行.</p>
+<p>cbind合并列</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## USArrests是一个数据集,state.division是一个因子</span>
+<span class="token operator">></span> cbind<span class="token punctuation">(</span>USArrests<span class="token punctuation">,</span>state.division<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>rbind合并行,这个比较麻烦,需要所有的列有源数据集有相同的列名</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 取出前20行和尾20行合并</span>
+<span class="token operator">></span> data1 <span class="token operator">=</span> head<span class="token punctuation">(</span>USArrests<span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token operator">></span> data2 <span class="token operator">=</span> head<span class="token punctuation">(</span>USArrests<span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token operator">></span> b <span class="token operator">=</span> rbind<span class="token punctuation">(</span>data1<span class="token punctuation">,</span>data2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>cbind和rbind也可以用于矩阵</p>
+<p>回顾rownames可以取出行名</p>
+<p>判断向量和数据框中哪些是重复值</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> duplicated<span class="token punctuation">(</span>who<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>用unique(data4)可以一步取出重复项</p>
+<h2 id="36-数据转换-三"><a href="#36-数据转换-三" class="headerlink" title="36-数据转换(三)"></a>36-数据转换(三)</h2><p>R中行列的调换,excel中可以复制后选择性粘贴.R中可以用<code>t()</code>函数实现转换</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> sractm <span class="token operator">=</span> t<span class="token punctuation">(</span>mtcars<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>单独一行的反转,生物序列中很常见,主要是反向互补,可以使用rev函,reverse的意思 </p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> letters
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token string">"a"</span> <span class="token string">"b"</span> <span class="token string">"c"</span> <span class="token string">"d"</span> <span class="token string">"e"</span> <span class="token string">"f"</span> <span class="token string">"g"</span> <span class="token string">"h"</span> <span class="token string">"i"</span> <span class="token string">"j"</span> <span class="token string">"k"</span> <span class="token string">"l"</span>
+<span class="token punctuation">[</span><span class="token number">13</span><span class="token punctuation">]</span> <span class="token string">"m"</span> <span class="token string">"n"</span> <span class="token string">"o"</span> <span class="token string">"p"</span> <span class="token string">"q"</span> <span class="token string">"r"</span> <span class="token string">"s"</span> <span class="token string">"t"</span> <span class="token string">"u"</span> <span class="token string">"v"</span> <span class="token string">"w"</span> <span class="token string">"x"</span>
+<span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span> <span class="token string">"y"</span> <span class="token string">"z"</span>
+<span class="token operator">></span> rev<span class="token punctuation">(</span>letters<span class="token punctuation">)</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token string">"z"</span> <span class="token string">"y"</span> <span class="token string">"x"</span> <span class="token string">"w"</span> <span class="token string">"v"</span> <span class="token string">"u"</span> <span class="token string">"t"</span> <span class="token string">"s"</span> <span class="token string">"r"</span> <span class="token string">"q"</span> <span class="token string">"p"</span> <span class="token string">"o"</span>
+<span class="token punctuation">[</span><span class="token number">13</span><span class="token punctuation">]</span> <span class="token string">"n"</span> <span class="token string">"m"</span> <span class="token string">"l"</span> <span class="token string">"k"</span> <span class="token string">"j"</span> <span class="token string">"i"</span> <span class="token string">"h"</span> <span class="token string">"g"</span> <span class="token string">"f"</span> <span class="token string">"e"</span> <span class="token string">"d"</span> <span class="token string">"c"</span>
+<span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span> <span class="token string">"b"</span> <span class="token string">"a"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>数据框中的数据反转,思路就是,提取行名,反转,以反转后的行名为索引</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> rowname<span class="token punctuation">(</span>women<span class="token punctuation">)</span>
+<span class="token operator">></span> rev<span class="token punctuation">(</span>rowname<span class="token punctuation">(</span>women<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">></span> women<span class="token punctuation">[</span>rev<span class="token punctuation">(</span>rowname<span class="token punctuation">(</span>women<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如何修改数据框中的值，可以使用transform()</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 比如</span>
+<span class="token operator">></span> transform<span class="token punctuation">(</span>women<span class="token punctuation">,</span>height<span class="token operator">=</span>height<span class="token operator">*</span><span class="token number">2.54</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>排序</p>
+<p>sort可以对向量进行排序,可以排序数字,字母,</p>
+<p>sort中也可以设置参数decreasing = T进行从大小排序</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> sort<span class="token punctuation">(</span>rivers<span class="token punctuation">,</span>decreasing <span class="token operator">=</span> T<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>order排序返回的是排序后的索引值,在数据框中是比较常用的.返回索引值后可以拿来数据框的排序</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 如果换成sort就不行了</span>
+<span class="token operator">></span> mtcars<span class="token punctuation">[</span>order<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>mpg<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">]</span>
+
+<span class="token comment">## "-"反向排序,也可以加参数decreasing = T</span>
+<span class="token operator">></span> mtcars<span class="token punctuation">[</span>order<span class="token punctuation">(</span><span class="token operator">-</span>mtcars<span class="token operator">$</span>mpg<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">]</span>
+<span class="token operator">></span> mtcars<span class="token punctuation">[</span>order<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>mpg<span class="token punctuation">,</span>decreasing <span class="token operator">=</span> T<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其次还有rank 函数,</p>
+<h2 id="37-数据转换-四"><a href="#37-数据转换-四" class="headerlink" title="37-数据转换(四)"></a>37-数据转换(四)</h2><p>如何对数据框进行数学计算</p>
+<!--<img src="https://s1.ax1x.com/2020/06/06/t6o5dS.png" alt="t6o5dS.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/06/t6o5dS.png" alt="t6o5dS.png"></p>
+<p>统计</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">worldphones <span class="token operator">=</span> as.data.frame<span class="token punctuation">(</span>WorldPhones<span class="token punctuation">)</span>  <span class="token comment">## 转换成数据框</span>
+rs <span class="token operator">=</span> rowSums<span class="token punctuation">(</span>worldphones<span class="token punctuation">)</span>  <span class="token comment">## 对行进行求和</span>
+cm <span class="token operator">=</span> colMeans<span class="token punctuation">(</span>worldphones<span class="token punctuation">)</span>  <span class="token comment">## 对列求平均</span>
+total <span class="token operator">=</span> cbind<span class="token punctuation">(</span>worldphones<span class="token punctuation">,</span>Total<span class="token operator">=</span>rs<span class="token punctuation">)</span>  <span class="token comment">## 添加一列</span>
+rbind<span class="token punctuation">(</span>total<span class="token punctuation">,</span>cm<span class="token punctuation">)</span>  <span class="token comment">## 添加一行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>apply函数,使用与数据框和矩阵,可以有多个功能参数</p>
+<p>主要四两个参数,margin,fun;margin = 1表示对行进行求和,2表示对列进行求和.fun表示功能,要进行的操作</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?apply
+<span class="token comment">## 对行求和</span>
+<span class="token operator">></span> apply<span class="token punctuation">(</span>WorldPhones<span class="token punctuation">,</span>MARGIN <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>FUN <span class="token operator">=</span> sum<span class="token punctuation">)</span>
+<span class="token comment">## 对列求平均值</span>
+<span class="token operator">></span> apply<span class="token punctuation">(</span>WorldPhones<span class="token punctuation">,</span>MARGIN <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>FUN <span class="token operator">=</span> mean<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>lapply 表示list apply ,适用于list列表</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> lapply<span class="token punctuation">(</span>state.center<span class="token punctuation">,</span> length<span class="token punctuation">)</span>
+<span class="token operator">$</span>x
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">50</span>
+
+<span class="token operator">$</span>y
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">50</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>sapply</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> sapply<span class="token punctuation">(</span>state.center<span class="token punctuation">,</span> length<span class="token punctuation">)</span>
+ x  y 
+<span class="token number">50</span> <span class="token number">50</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>tapply 用于处理因子数据,根据因子分组,然后根据因子分组进行处理</p>
+<p>第一个参数问数据集,第三个参数是要使用的函数</p>
+<p>没咋懂!!!</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> tapply<span class="token punctuation">(</span>state.name<span class="token punctuation">,</span>state.division<span class="token punctuation">,</span>FUN<span class="token operator">=</span>length<span class="token punctuation">)</span>
+       New England    Middle Atlantic 
+                 <span class="token number">6</span>                  <span class="token number">3</span> 
+    South Atlantic East South Central 
+                 <span class="token number">8</span>                  <span class="token number">4</span> 
+West South Central East North Central 
+                 <span class="token number">4</span>                  <span class="token number">5</span> 
+West North Central           Mountain 
+                 <span class="token number">7</span>                  <span class="token number">8</span> 
+           Pacific 
+                 <span class="token number">5</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="R中数据的中心化与标准化处理"><a href="#R中数据的中心化与标准化处理" class="headerlink" title="R中数据的中心化与标准化处理"></a>R中数据的中心化与标准化处理</h3><p>数据的中心化,是指数据集中的各项数据减去数据集的均值</p>
+<p>数据的标准化,是指在中心化后在除以数据集的标准差,即数据集中的各项数据减去数据集的均值再除以数据集的标准差.</p>
+<p>R中实现中心化和标准化可以用scale函数,有两个参数,center和scale</p>
+<p>比如state.x77这个数据集</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> x <span class="token operator">=</span> scale<span class="token punctuation">(</span>state.x77<span class="token punctuation">,</span>center <span class="token operator">=</span> T<span class="token punctuation">,</span>scale <span class="token operator">=</span> T<span class="token punctuation">)</span>
+<span class="token operator">></span> heatmap<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<h2 id="38-数据格式的转换-reshape2包"><a href="#38-数据格式的转换-reshape2包" class="headerlink" title="38-数据格式的转换(reshape2包)"></a>38-数据格式的转换(reshape2包)</h2><p>大概的过程相当于钢铁的制造过程,先把铁融化,然后在做成想要的形状.在数据的过程中,称为柔数据,很像是excel中的数据透视表.</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 这里是一组空气质量的数据</span>
+<span class="token operator">></span> names<span class="token punctuation">(</span>airquality<span class="token punctuation">)</span> <span class="token operator">=</span> tolower<span class="token punctuation">(</span>names<span class="token punctuation">(</span>airquality<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">## 把首字母小写</span>
+<span class="token operator">></span> melt<span class="token punctuation">(</span>airquality<span class="token punctuation">)</span>  <span class="token comment">## 融合数据</span>
+<span class="token operator">></span> aql <span class="token operator">=</span> melt<span class="token punctuation">(</span>airquality<span class="token punctuation">)</span>  <span class="token comment">## 融合后数据变为三列</span>
+
+<span class="token operator">></span> aql <span class="token operator">=</span> melt<span class="token punctuation">(</span>airquality<span class="token punctuation">,</span>id.vars <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token string">"month"</span><span class="token punctuation">,</span><span class="token string">"day"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">## 将月份和日期作为id变量.</span>
+
+<span class="token operator">></span> aqw <span class="token operator">=</span> dcast<span class="token punctuation">(</span>aql<span class="token punctuation">,</span>month<span class="token operator">+</span>day <span class="token operator">~</span>variable<span class="token punctuation">)</span>  <span class="token comment">## 重铸数据,与variable相关联</span>
+<span class="token operator">></span> aqw <span class="token operator">=</span> dcast<span class="token punctuation">(</span>aql<span class="token punctuation">,</span>month<span class="token operator">+</span>day <span class="token operator">~</span>variable<span class="token punctuation">,</span>fun.aggregate <span class="token operator">=</span> mean<span class="token punctuation">,</span>na.rm<span class="token operator">=</span><span class="token boolean">TRUE</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>没怎么听懂.  可以在右下的框框中找到reshape2的帮助包,找到acast和dcast把其中的案例都运行一边,</p>
+<p>~ 表示有关联有关系 </p>
+<h2 id="39-数据格式的转换-tidyr包"><a href="#39-数据格式的转换-tidyr包" class="headerlink" title="39-数据格式的转换(tidyr包)"></a>39-数据格式的转换(tidyr包)</h2><p>简洁数据中</p>
+<ol>
+<li>每一列代表一个变量</li>
+<li>每一行代表一个观测</li>
+<li>每一个观测的值在表中的一个单元格中 </li>
+</ol>
+<p>tidyr包中有四个重要的函数</p>
+<ul>
+<li>gather 主要是将宽数据转换成长数据,类似于reshape2包中的melt函数   </li>
+<li>spread 将长数据转换成宽数据,类似于reshape中的cast函数</li>
+<li>unite 是将多列合并为一列</li>
+<li>separate 是将一列分成多列</li>
+</ul>
+<p>mtcars数据集为例,就是一个标准的tidydata数据集</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> tdata <span class="token operator">=</span> mtcars<span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">></span> tdata
+                   mpg cyl  disp
+Mazda RX4         <span class="token number">21.0</span>   <span class="token number">6</span> <span class="token number">160.0</span>
+Mazda RX4 Wag     <span class="token number">21.0</span>   <span class="token number">6</span> <span class="token number">160.0</span>
+Datsun <span class="token number">710</span>        <span class="token number">22.8</span>   <span class="token number">4</span> <span class="token number">108.0</span>
+Hornet <span class="token number">4</span> Drive    <span class="token number">21.4</span>   <span class="token number">6</span> <span class="token number">258.0</span>
+Hornet Sportabout <span class="token number">18.7</span>   <span class="token number">8</span> <span class="token number">360.0</span>
+Valiant           <span class="token number">18.1</span>   <span class="token number">6</span> <span class="token number">225.0</span>
+Duster <span class="token number">360</span>        <span class="token number">14.3</span>   <span class="token number">8</span> <span class="token number">360.0</span>
+Merc <span class="token number">240</span>D         <span class="token number">24.4</span>   <span class="token number">4</span> <span class="token number">146.7</span>
+Merc <span class="token number">230</span>          <span class="token number">22.8</span>   <span class="token number">4</span> <span class="token number">140.8</span>
+Merc <span class="token number">280</span>          <span class="token number">19.2</span>   <span class="token number">6</span> <span class="token number">167.6</span>
+
+<span class="token comment">## 以第一列的数据添加到数据集中</span>
+<span class="token operator">></span> tdata <span class="token operator">=</span> data.frame<span class="token punctuation">(</span>names<span class="token operator">=</span>rownames<span class="token punctuation">(</span>tdata<span class="token punctuation">)</span><span class="token punctuation">,</span>tdata<span class="token punctuation">)</span>
+<span class="token operator">></span> tdata
+                              names  mpg cyl  disp
+Mazda RX4                 Mazda RX4 <span class="token number">21.0</span>   <span class="token number">6</span> <span class="token number">160.0</span>
+Mazda RX4 Wag         Mazda RX4 Wag <span class="token number">21.0</span>   <span class="token number">6</span> <span class="token number">160.0</span>
+Datsun <span class="token number">710</span>               Datsun <span class="token number">710</span> <span class="token number">22.8</span>   <span class="token number">4</span> <span class="token number">108.0</span>
+Hornet <span class="token number">4</span> Drive       Hornet <span class="token number">4</span> Drive <span class="token number">21.4</span>   <span class="token number">6</span> <span class="token number">258.0</span>
+Hornet Sportabout Hornet Sportabout <span class="token number">18.7</span>   <span class="token number">8</span> <span class="token number">360.0</span>
+Valiant                     Valiant <span class="token number">18.1</span>   <span class="token number">6</span> <span class="token number">225.0</span>
+Duster <span class="token number">360</span>               Duster <span class="token number">360</span> <span class="token number">14.3</span>   <span class="token number">8</span> <span class="token number">360.0</span>
+Merc <span class="token number">240</span>D                 Merc <span class="token number">240</span>D <span class="token number">24.4</span>   <span class="token number">4</span> <span class="token number">146.7</span>
+Merc <span class="token number">230</span>                   Merc <span class="token number">230</span> <span class="token number">22.8</span>   <span class="token number">4</span> <span class="token number">140.8</span>
+Merc <span class="token number">280</span>                   Merc <span class="token number">280</span> <span class="token number">19.2</span>   <span class="token number">6</span> <span class="token number">167.6</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>gather函数,可以调整行列</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">
+<span class="token comment">## 对dyl,disp,mpg进行处理,如下</span>
+<span class="token operator">></span> gather<span class="token punctuation">(</span>tdata<span class="token punctuation">,</span>key <span class="token operator">=</span> <span class="token string">"Key"</span><span class="token punctuation">,</span>value <span class="token operator">=</span> <span class="token string">"Value"</span><span class="token punctuation">,</span>cyl<span class="token punctuation">,</span>disp<span class="token punctuation">,</span>mpg<span class="token punctuation">)</span>
+               names  Key Value
+<span class="token number">1</span>          Mazda RX4  cyl   <span class="token number">6.0</span>
+<span class="token number">2</span>      Mazda RX4 Wag  cyl   <span class="token number">6.0</span>
+<span class="token number">3</span>         Datsun <span class="token number">710</span>  cyl   <span class="token number">4.0</span>
+<span class="token number">4</span>     Hornet <span class="token number">4</span> Drive  cyl   <span class="token number">6.0</span>
+<span class="token number">5</span>  Hornet Sportabout  cyl   <span class="token number">8.0</span>
+<span class="token number">6</span>            Valiant  cyl   <span class="token number">6.0</span>
+<span class="token number">7</span>         Duster <span class="token number">360</span>  cyl   <span class="token number">8.0</span>
+<span class="token number">8</span>          Merc <span class="token number">240</span>D  cyl   <span class="token number">4.0</span>
+<span class="token number">9</span>           Merc <span class="token number">230</span>  cyl   <span class="token number">4.0</span>
+<span class="token number">10</span>          Merc <span class="token number">280</span>  cyl   <span class="token number">6.0</span>
+<span class="token number">11</span>         Mazda RX4 disp <span class="token number">160.0</span>
+<span class="token number">12</span>     Mazda RX4 Wag disp <span class="token number">160.0</span>
+<span class="token number">13</span>        Datsun <span class="token number">710</span> disp <span class="token number">108.0</span>
+<span class="token number">14</span>    Hornet <span class="token number">4</span> Drive disp <span class="token number">258.0</span>
+<span class="token number">15</span> Hornet Sportabout disp <span class="token number">360.0</span>
+<span class="token number">16</span>           Valiant disp <span class="token number">225.0</span>
+<span class="token number">17</span>        Duster <span class="token number">360</span> disp <span class="token number">360.0</span>
+<span class="token number">18</span>         Merc <span class="token number">240</span>D disp <span class="token number">146.7</span>
+<span class="token number">19</span>          Merc <span class="token number">230</span> disp <span class="token number">140.8</span>
+<span class="token number">20</span>          Merc <span class="token number">280</span> disp <span class="token number">167.6</span>
+<span class="token number">21</span>         Mazda RX4  mpg  <span class="token number">21.0</span>
+<span class="token number">22</span>     Mazda RX4 Wag  mpg  <span class="token number">21.0</span>
+<span class="token number">23</span>        Datsun <span class="token number">710</span>  mpg  <span class="token number">22.8</span>
+<span class="token number">24</span>    Hornet <span class="token number">4</span> Drive  mpg  <span class="token number">21.4</span>
+<span class="token number">25</span> Hornet Sportabout  mpg  <span class="token number">18.7</span>
+<span class="token number">26</span>           Valiant  mpg  <span class="token number">18.1</span>
+<span class="token number">27</span>        Duster <span class="token number">360</span>  mpg  <span class="token number">14.3</span>
+<span class="token number">28</span>         Merc <span class="token number">240</span>D  mpg  <span class="token number">24.4</span>
+<span class="token number">29</span>          Merc <span class="token number">230</span>  mpg  <span class="token number">22.8</span>
+<span class="token number">30</span>          Merc <span class="token number">280</span>  mpg  <span class="token number">19.2</span>
+
+<span class="token comment">## 可用"-"号,将disp单独放入一列中,</span>
+<span class="token operator">></span> gdata <span class="token operator">=</span> gather<span class="token punctuation">(</span>tdata<span class="token punctuation">,</span>key <span class="token operator">=</span> <span class="token string">"Key"</span><span class="token punctuation">,</span>value <span class="token operator">=</span> <span class="token string">"Value"</span><span class="token punctuation">,</span>cyl<span class="token punctuation">,</span><span class="token operator">-</span>disp<span class="token punctuation">,</span>mpg<span class="token punctuation">)</span>
+<span class="token operator">></span> gdata
+               names  disp Key Value
+<span class="token number">1</span>          Mazda RX4 <span class="token number">160.0</span> cyl   <span class="token number">6.0</span>
+<span class="token number">2</span>      Mazda RX4 Wag <span class="token number">160.0</span> cyl   <span class="token number">6.0</span>
+<span class="token number">3</span>         Datsun <span class="token number">710</span> <span class="token number">108.0</span> cyl   <span class="token number">4.0</span>
+<span class="token number">4</span>     Hornet <span class="token number">4</span> Drive <span class="token number">258.0</span> cyl   <span class="token number">6.0</span>
+<span class="token number">5</span>  Hornet Sportabout <span class="token number">360.0</span> cyl   <span class="token number">8.0</span>
+<span class="token number">6</span>            Valiant <span class="token number">225.0</span> cyl   <span class="token number">6.0</span>
+<span class="token number">7</span>         Duster <span class="token number">360</span> <span class="token number">360.0</span> cyl   <span class="token number">8.0</span>
+<span class="token number">8</span>          Merc <span class="token number">240</span>D <span class="token number">146.7</span> cyl   <span class="token number">4.0</span>
+<span class="token number">9</span>           Merc <span class="token number">230</span> <span class="token number">140.8</span> cyl   <span class="token number">4.0</span>
+<span class="token number">10</span>          Merc <span class="token number">280</span> <span class="token number">167.6</span> cyl   <span class="token number">6.0</span>
+<span class="token number">11</span>         Mazda RX4 <span class="token number">160.0</span> mpg  <span class="token number">21.0</span>
+<span class="token number">12</span>     Mazda RX4 Wag <span class="token number">160.0</span> mpg  <span class="token number">21.0</span>
+<span class="token number">13</span>        Datsun <span class="token number">710</span> <span class="token number">108.0</span> mpg  <span class="token number">22.8</span>
+<span class="token number">14</span>    Hornet <span class="token number">4</span> Drive <span class="token number">258.0</span> mpg  <span class="token number">21.4</span>
+<span class="token number">15</span> Hornet Sportabout <span class="token number">360.0</span> mpg  <span class="token number">18.7</span>
+<span class="token number">16</span>           Valiant <span class="token number">225.0</span> mpg  <span class="token number">18.1</span>
+<span class="token number">17</span>        Duster <span class="token number">360</span> <span class="token number">360.0</span> mpg  <span class="token number">14.3</span>
+<span class="token number">18</span>         Merc <span class="token number">240</span>D <span class="token number">146.7</span> mpg  <span class="token number">24.4</span>
+<span class="token number">19</span>          Merc <span class="token number">230</span> <span class="token number">140.8</span> mpg  <span class="token number">22.8</span>
+<span class="token number">20</span>          Merc <span class="token number">280</span> <span class="token number">167.6</span> mpg  <span class="token number">19.2</span>
+
+<span class="token comment">## 也可以用列号</span>
+gather<span class="token punctuation">(</span>tdata<span class="token punctuation">,</span>key <span class="token operator">=</span> <span class="token string">"Key"</span><span class="token punctuation">,</span>value <span class="token operator">=</span> <span class="token string">"Value"</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">:</span><span class="token number">4</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>spread 函数,基本和gather相反</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> spdata <span class="token operator">=</span> spread<span class="token punctuation">(</span>gdata<span class="token punctuation">,</span>key <span class="token operator">=</span> <span class="token string">"Key"</span><span class="token punctuation">,</span>value <span class="token operator">=</span> <span class="token string">"Value"</span><span class="token punctuation">)</span>
+<span class="token operator">></span> spdata
+               names cyl  disp  mpg
+<span class="token number">1</span>         Datsun <span class="token number">710</span>   <span class="token number">4</span> <span class="token number">108.0</span> <span class="token number">22.8</span>
+<span class="token number">2</span>         Duster <span class="token number">360</span>   <span class="token number">8</span> <span class="token number">360.0</span> <span class="token number">14.3</span>
+<span class="token number">3</span>     Hornet <span class="token number">4</span> Drive   <span class="token number">6</span> <span class="token number">258.0</span> <span class="token number">21.4</span>
+<span class="token number">4</span>  Hornet Sportabout   <span class="token number">8</span> <span class="token number">360.0</span> <span class="token number">18.7</span>
+<span class="token number">5</span>          Mazda RX4   <span class="token number">6</span> <span class="token number">160.0</span> <span class="token number">21.0</span>
+<span class="token number">6</span>      Mazda RX4 Wag   <span class="token number">6</span> <span class="token number">160.0</span> <span class="token number">21.0</span>
+<span class="token number">7</span>           Merc <span class="token number">230</span>   <span class="token number">4</span> <span class="token number">140.8</span> <span class="token number">22.8</span>
+<span class="token number">8</span>          Merc <span class="token number">240</span>D   <span class="token number">4</span> <span class="token number">146.7</span> <span class="token number">24.4</span>
+<span class="token number">9</span>           Merc <span class="token number">280</span>   <span class="token number">6</span> <span class="token number">167.6</span> <span class="token number">19.2</span>
+<span class="token number">10</span>           Valiant   <span class="token number">6</span> <span class="token number">225.0</span> <span class="token number">18.1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>spread默认识别”.”分割符,sep可以指定分隔符如:</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> df <span class="token operator">=</span> data.frame<span class="token punctuation">(</span>x <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token keyword">NA</span><span class="token punctuation">,</span><span class="token string">"a.b"</span><span class="token punctuation">,</span><span class="token string">"a.c"</span><span class="token punctuation">,</span><span class="token string">"b.c"</span><span class="token punctuation">)</span>
+<span class="token operator">></span> df
+     x
+<span class="token number">1</span> <span class="token operator">&lt;</span><span class="token keyword">NA</span><span class="token operator">></span>
+<span class="token number">2</span>  a.b
+<span class="token number">3</span>  a.c
+<span class="token number">4</span>  b.c
+<span class="token operator">></span> separate<span class="token punctuation">(</span>df<span class="token punctuation">,</span>col <span class="token operator">=</span> x<span class="token punctuation">,</span>into <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span><span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>sep <span class="token operator">=</span> <span class="token string">"-"</span><span class="token punctuation">)</span>
+     A    B
+<span class="token number">1</span> <span class="token operator">&lt;</span><span class="token keyword">NA</span><span class="token operator">></span> <span class="token operator">&lt;</span><span class="token keyword">NA</span><span class="token operator">></span>
+<span class="token number">2</span>    a    b
+<span class="token number">3</span>    a    c
+<span class="token number">4</span>    b    c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>unite是一个相反的操作</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> unite<span class="token punctuation">(</span>x<span class="token punctuation">,</span>col <span class="token operator">=</span> <span class="token string">"CD"</span><span class="token punctuation">,</span>A<span class="token punctuation">,</span>B<span class="token punctuation">,</span>sep <span class="token operator">=</span> <span class="token string">"-"</span><span class="token punctuation">)</span>
+     CD
+<span class="token number">1</span> <span class="token keyword">NA</span><span class="token operator">-</span><span class="token keyword">NA</span>
+<span class="token number">2</span>   a<span class="token operator">-</span>b
+<span class="token number">3</span>   a<span class="token operator">-</span>c
+<span class="token number">4</span>   b<span class="token operator">-</span>c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="40-数据格式的转换-dplyr包"><a href="#40-数据格式的转换-dplyr包" class="headerlink" title="40-数据格式的转换(dplyr包)"></a>40-数据格式的转换(dplyr包)</h2><p>这是一个非常强大的包</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ls<span class="token punctuation">(</span><span class="token string">"package:dplyr"</span><span class="token punctuation">)</span>  <span class="token comment">## 可以列出包的所有的函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>dplyr::filer功能,根据给定条件,对数据进行过滤,例如</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## dplyr::是调用的这个包中的函数,因为函数太多所以可以防止出现奇异</span>
+<span class="token operator">></span> dplyr<span class="token operator">::</span>filter<span class="token punctuation">(</span>iris<span class="token punctuation">,</span>Sepal.Length<span class="token operator">></span><span class="token number">7</span><span class="token punctuation">)</span>  <span class="token comment">## 过滤出花萼长度大于7的</span>
+   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+<span class="token number">1</span>           <span class="token number">7.1</span>         <span class="token number">3.0</span>          <span class="token number">5.9</span>         <span class="token number">2.1</span> virginica
+<span class="token number">2</span>           <span class="token number">7.6</span>         <span class="token number">3.0</span>          <span class="token number">6.6</span>         <span class="token number">2.1</span> virginica
+<span class="token number">3</span>           <span class="token number">7.3</span>         <span class="token number">2.9</span>          <span class="token number">6.3</span>         <span class="token number">1.8</span> virginica
+<span class="token number">4</span>           <span class="token number">7.2</span>         <span class="token number">3.6</span>          <span class="token number">6.1</span>         <span class="token number">2.5</span> virginica
+<span class="token number">5</span>           <span class="token number">7.7</span>         <span class="token number">3.8</span>          <span class="token number">6.7</span>         <span class="token number">2.2</span> virginica
+<span class="token number">6</span>           <span class="token number">7.7</span>         <span class="token number">2.6</span>          <span class="token number">6.9</span>         <span class="token number">2.3</span> virginica
+<span class="token number">7</span>           <span class="token number">7.7</span>         <span class="token number">2.8</span>          <span class="token number">6.7</span>         <span class="token number">2.0</span> virginica
+<span class="token number">8</span>           <span class="token number">7.2</span>         <span class="token number">3.2</span>          <span class="token number">6.0</span>         <span class="token number">1.8</span> virginica
+<span class="token number">9</span>           <span class="token number">7.2</span>         <span class="token number">3.0</span>          <span class="token number">5.8</span>         <span class="token number">1.6</span> virginica
+<span class="token number">10</span>          <span class="token number">7.4</span>         <span class="token number">2.8</span>          <span class="token number">6.1</span>         <span class="token number">1.9</span> virginica
+<span class="token number">11</span>          <span class="token number">7.9</span>         <span class="token number">3.8</span>          <span class="token number">6.4</span>         <span class="token number">2.0</span> virginica
+<span class="token number">12</span>          <span class="token number">7.7</span>         <span class="token number">3.0</span>          <span class="token number">6.1</span>         <span class="token number">2.3</span> virginica<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>dplyr::distinct用于去除重复行,相当于unic</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> dplyr<span class="token operator">::</span>distinct<span class="token punctuation">(</span>rbind<span class="token punctuation">(</span>iris<span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span class="token punctuation">,</span>iris<span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+<span class="token number">1</span>           <span class="token number">5.1</span>         <span class="token number">3.5</span>          <span class="token number">1.4</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">2</span>           <span class="token number">4.9</span>         <span class="token number">3.0</span>          <span class="token number">1.4</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">3</span>           <span class="token number">4.7</span>         <span class="token number">3.2</span>          <span class="token number">1.3</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">4</span>           <span class="token number">4.6</span>         <span class="token number">3.1</span>          <span class="token number">1.5</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">5</span>           <span class="token number">5.0</span>         <span class="token number">3.6</span>          <span class="token number">1.4</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">6</span>           <span class="token number">5.4</span>         <span class="token number">3.9</span>          <span class="token number">1.7</span>         <span class="token number">0.4</span>  setosa
+<span class="token number">7</span>           <span class="token number">4.6</span>         <span class="token number">3.4</span>          <span class="token number">1.4</span>         <span class="token number">0.3</span>  setosa
+<span class="token number">8</span>           <span class="token number">5.0</span>         <span class="token number">3.4</span>          <span class="token number">1.5</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">9</span>           <span class="token number">4.4</span>         <span class="token number">2.9</span>          <span class="token number">1.4</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">10</span>          <span class="token number">4.9</span>         <span class="token number">3.1</span>          <span class="token number">1.5</span>         <span class="token number">0.1</span>  setosa
+<span class="token number">11</span>          <span class="token number">5.4</span>         <span class="token number">3.7</span>          <span class="token number">1.5</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">12</span>          <span class="token number">4.8</span>         <span class="token number">3.4</span>          <span class="token number">1.6</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">13</span>          <span class="token number">4.8</span>         <span class="token number">3.0</span>          <span class="token number">1.4</span>         <span class="token number">0.1</span>  setosa
+<span class="token number">14</span>          <span class="token number">4.3</span>         <span class="token number">3.0</span>          <span class="token number">1.1</span>         <span class="token number">0.1</span>  setosa
+<span class="token number">15</span>          <span class="token number">5.8</span>         <span class="token number">4.0</span>          <span class="token number">1.2</span>         <span class="token number">0.2</span>  setosa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>dplyr::slice()用于切片</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> dplyr<span class="token operator">::</span>slice<span class="token punctuation">(</span>iris<span class="token punctuation">,</span><span class="token number">10</span><span class="token operator">:</span><span class="token number">15</span><span class="token punctuation">)</span>
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+<span class="token number">1</span>          <span class="token number">4.9</span>         <span class="token number">3.1</span>          <span class="token number">1.5</span>         <span class="token number">0.1</span>  setosa
+<span class="token number">2</span>          <span class="token number">5.4</span>         <span class="token number">3.7</span>          <span class="token number">1.5</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">3</span>          <span class="token number">4.8</span>         <span class="token number">3.4</span>          <span class="token number">1.6</span>         <span class="token number">0.2</span>  setosa
+<span class="token number">4</span>          <span class="token number">4.8</span>         <span class="token number">3.0</span>          <span class="token number">1.4</span>         <span class="token number">0.1</span>  setosa
+<span class="token number">5</span>          <span class="token number">4.3</span>         <span class="token number">3.0</span>          <span class="token number">1.1</span>         <span class="token number">0.1</span>  setosa
+<span class="token number">6</span>          <span class="token number">5.8</span>         <span class="token number">4.0</span>          <span class="token number">1.2</span>         <span class="token number">0.2</span>  setosa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>dplyr::filter(iris,Sepal.Length&gt;7)</code> 过滤出花萼长度大于7的花</li>
+<li><code>dplyr::slice(iris,10:15)</code> 表示切出10:15的行</li>
+<li><code>dplyr::sample_n(iris,10)</code> 表示随机抽取10行</li>
+<li><code>dplyr::sample_frac(iris,0.1)</code> 按比例抽取10分之一的数据</li>
+<li><code>dplyr::arrange(iris,Sepal.Length)</code> 表示安装花萼长度进行排序</li>
+<li><code>dplyr::arrange(iris,desc(Sepal.Length))</code> 表示反向进行排序</li>
+</ul>
+<h4 id="dplyr中取子集的功能"><a href="#dplyr中取子集的功能" class="headerlink" title="dplyr中取子集的功能"></a>dplyr中取子集的功能</h4><p>介绍中<code>?select</code>中有大量的示例</p>
+<h4 id="dplyr的统计函数"><a href="#dplyr的统计函数" class="headerlink" title="dplyr的统计函数"></a>dplyr的统计函数</h4><p>可以使用summarise进行统计</p>
+<ul>
+<li><code>summarise(iris,avg=mean(Sepal.Length))</code> 可以计算花萼的平均长度</li>
+<li><code>summarise(iris,sum=sum(Sepal.Length))</code> 可以计算花萼的总长度</li>
+</ul>
+<h3 id="链式操作符-gt"><a href="#链式操作符-gt" class="headerlink" title="链式操作符%&gt;%"></a>链式操作符%&gt;%</h3><p>将一个函数的输出传递给下一个函数,用作下一个函数的输入,类似于linux中的管道,Rstudio中可以使用ctrl+shift+M调用</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">iris 通过管道进行分组<span class="token punctuation">,</span>再通过管道计算平均值<span class="token punctuation">,</span>再通过管道进行排序
+<span class="token operator">></span> iris <span class="token percent-operator operator">%>%</span> group_by<span class="token punctuation">(</span>Species<span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> summarise<span class="token punctuation">(</span>avg<span class="token operator">=</span>mean<span class="token punctuation">(</span>Sepal.Width<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token percent-operator operator">%>%</span> arrange<span class="token punctuation">(</span>avg<span class="token punctuation">)</span>
+`summarise<span class="token punctuation">(</span><span class="token punctuation">)</span>` ungrouping output <span class="token punctuation">(</span>override with `.groups` argument<span class="token punctuation">)</span>
+<span class="token comment"># A tibble: 3 x 2</span>
+  Species      avg
+  <span class="token operator">&lt;</span>fct<span class="token operator">></span>      <span class="token operator">&lt;</span>dbl<span class="token operator">></span>
+<span class="token number">1</span> versicolor  <span class="token number">2.77</span>
+<span class="token number">2</span> virginica   <span class="token number">2.97</span>
+<span class="token number">3</span> setosa      <span class="token number">3.43</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>mutate可以添加新的变量</p>
+<h3 id="dplyr中双表格的操控"><a href="#dplyr中双表格的操控" class="headerlink" title="dplyr中双表格的操控"></a>dplyr中双表格的操控</h3><p>整合方式包括左连接,有链接,内连接,全连接,半连接,反链接等.内连接是取交集,全连接是取并集.</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 建立两个数据框</span>
+<span class="token operator">></span> a <span class="token operator">=</span> data.frame<span class="token punctuation">(</span>x1<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span><span class="token string">"B"</span><span class="token punctuation">,</span><span class="token string">"C"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>x2<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">></span> b <span class="token operator">=</span> data.frame<span class="token punctuation">(</span>x1<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span><span class="token string">"B"</span><span class="token punctuation">,</span><span class="token string">"D"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>x3<span class="token operator">=</span>c<span class="token punctuation">(</span>T<span class="token punctuation">,</span>F<span class="token punctuation">,</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">## 左连接,就是以左边的表为基础进行合并</span>
+<span class="token operator">></span>  dplyr<span class="token operator">::</span>left_join<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>by<span class="token operator">=</span><span class="token string">"x1"</span><span class="token punctuation">)</span>
+  x1 x2    x3
+<span class="token number">1</span>  A  <span class="token number">1</span>  <span class="token boolean">TRUE</span>
+<span class="token number">2</span>  B  <span class="token number">2</span> <span class="token boolean">FALSE</span>
+<span class="token number">3</span>  C  <span class="token number">3</span>    <span class="token keyword">NA</span>
+
+<span class="token comment">## 右连接,就是以右边的表为基础进行合并</span>
+<span class="token operator">></span>  dplyr<span class="token operator">::</span>right_join<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>by<span class="token operator">=</span><span class="token string">"x1"</span><span class="token punctuation">)</span>
+  x1 x2    x3
+<span class="token number">1</span>  A  <span class="token number">1</span>  <span class="token boolean">TRUE</span>
+<span class="token number">2</span>  B  <span class="token number">2</span> <span class="token boolean">FALSE</span>
+<span class="token number">3</span>  D <span class="token keyword">NA</span>  <span class="token boolean">TRUE</span>
+
+<span class="token comment">## 全连接取并集</span>
+<span class="token operator">></span> dplyr<span class="token operator">::</span>full_join<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>by<span class="token operator">=</span><span class="token string">"x1"</span><span class="token punctuation">)</span>
+  x1 x2    x3
+<span class="token number">1</span>  A  <span class="token number">1</span>  <span class="token boolean">TRUE</span>
+<span class="token number">2</span>  B  <span class="token number">2</span> <span class="token boolean">FALSE</span>
+<span class="token number">3</span>  C  <span class="token number">3</span>    <span class="token keyword">NA</span>
+<span class="token number">4</span>  D <span class="token keyword">NA</span>  <span class="token boolean">TRUE</span>
+
+<span class="token comment">## 半链接根据右侧表的内容于对左侧表进行过滤,不要交集,对a表进行操作.</span>
+<span class="token operator">></span> dplyr<span class="token operator">::</span>semi_join<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>by<span class="token operator">=</span><span class="token string">"x1"</span><span class="token punctuation">)</span>
+  x1 x2
+<span class="token number">1</span>  A  <span class="token number">1</span>
+<span class="token number">2</span>  B  <span class="token number">2</span>
+
+<span class="token comment">## 反链接也是根据右侧表进行操作,是将左侧表的补集取出来.对a表进行操作.</span>
+<span class="token operator">></span> dplyr<span class="token operator">::</span>anti_join<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>by<span class="token operator">=</span><span class="token string">"x1"</span><span class="token punctuation">)</span>
+  x1 x2
+<span class="token number">1</span>  C  <span class="token number">3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="41-R函数"><a href="#41-R函数" class="headerlink" title="41-R函数"></a>41-R函数</h2><p>类似于linux中是命令</p>
+<!--<img src="https://s1.ax1x.com/2020/06/09/t5F6gO.png" alt="t5F6gO.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/09/t5F6gO.png" alt="t5F6gO.png"></p>
+<p>lm 是一个回归分析<br>老师强调的是多用.</p>
+<h2 id="42-选项参数"><a href="#42-选项参数" class="headerlink" title="42-选项参数"></a>42-选项参数</h2><p>程序,选项,参数</p>
+<p>选项参数:</p>
+<ol>
+<li>输入控制部分</li>
+<li>输出控制部分</li>
+<li>调节部分</li>
+</ol>
+<p>在linux中数据几个参数就被称作几元函数,R中也是一样的<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19x411X7C6?p=42">视频</a><br>还是要不停的操作</p>
+<h2 id="43-数学统计函数"><a href="#43-数学统计函数" class="headerlink" title="43-数学统计函数"></a>43-数学统计函数</h2><p>概率论是统计学的基础,R有许多处理概率的函数.可能涉及到,样本空间,对立与互斥,随机事件与必然事件,概率密度,概率分布等.这个要你有统计学相关的书籍 </p>
+<ul>
+<li>d 概率密度函数</li>
+<li>p 分布函数</li>
+<li>q 分布函数的反函数</li>
+<li>r 产生相同分布的随机函数</li>
+</ul>
+<h4 id="正太分布相关的函数"><a href="#正太分布相关的函数" class="headerlink" title="正太分布相关的函数"></a>正太分布相关的函数</h4><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 分别为正太概率密度函数,正太分布函数,正太分位数函数,正太分布的随机数函数</span>
+
+?Normal
+dnorm<span class="token punctuation">(</span>x<span class="token punctuation">,</span> mean <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> sd <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> log <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">)</span>
+pnorm<span class="token punctuation">(</span>q<span class="token punctuation">,</span> mean <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> sd <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> lower.tail <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">,</span> log.p <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">)</span>
+qnorm<span class="token punctuation">(</span>p<span class="token punctuation">,</span> mean <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> sd <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> lower.tail <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">,</span> log.p <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">)</span>
+rnorm<span class="token punctuation">(</span>n<span class="token punctuation">,</span> mean <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> sd <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>比如随机生成100个随机的正太分布的数字</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> rnorm<span class="token punctuation">(</span>n <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">,</span>mean <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>sd <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">18.82627</span> <span class="token number">14.48052</span> <span class="token number">15.64733</span> <span class="token number">17.10765</span> <span class="token number">16.69834</span>
+  <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token number">17.18229</span> <span class="token number">15.82709</span> <span class="token number">14.38638</span> <span class="token number">17.03382</span> <span class="token number">15.75992</span>
+ <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">]</span> <span class="token number">15.62620</span> <span class="token number">15.91558</span> <span class="token number">16.44487</span> <span class="token number">12.72194</span> <span class="token number">15.26981</span>
+ <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span> <span class="token number">15.41339</span> <span class="token number">17.40237</span> <span class="token number">16.06431</span> <span class="token number">14.18183</span> <span class="token number">13.73592</span>
+ <span class="token punctuation">[</span><span class="token number">21</span><span class="token punctuation">]</span> <span class="token number">14.57075</span> <span class="token number">14.18284</span> <span class="token number">15.91646</span> <span class="token number">15.79732</span> <span class="token number">12.86899</span>
+ <span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span> <span class="token number">10.33624</span> <span class="token number">11.68006</span> <span class="token number">17.04716</span> <span class="token number">11.75353</span> <span class="token number">14.56665</span>
+ <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">]</span> <span class="token number">19.45208</span> <span class="token number">10.68233</span> <span class="token number">13.43531</span> <span class="token number">13.47316</span> <span class="token number">14.27902</span>
+ <span class="token punctuation">[</span><span class="token number">36</span><span class="token punctuation">]</span> <span class="token number">19.29866</span> <span class="token number">12.14214</span> <span class="token number">15.09897</span> <span class="token number">12.73730</span> <span class="token number">14.76324</span>
+ <span class="token punctuation">[</span><span class="token number">41</span><span class="token punctuation">]</span> <span class="token number">13.53597</span> <span class="token number">19.82190</span> <span class="token number">18.34059</span> <span class="token number">14.48723</span> <span class="token number">16.30598</span>
+ <span class="token punctuation">[</span><span class="token number">46</span><span class="token punctuation">]</span> <span class="token number">12.61513</span> <span class="token number">15.49195</span> <span class="token number">14.33117</span> <span class="token number">15.56077</span> <span class="token number">15.10224</span>
+ <span class="token punctuation">[</span><span class="token number">51</span><span class="token punctuation">]</span> <span class="token number">18.87988</span> <span class="token number">10.82265</span> <span class="token number">17.50272</span> <span class="token number">16.03550</span> <span class="token number">13.69167</span>
+ <span class="token punctuation">[</span><span class="token number">56</span><span class="token punctuation">]</span> <span class="token number">15.53061</span> <span class="token number">14.92809</span> <span class="token number">13.31095</span> <span class="token number">16.12193</span> <span class="token number">13.37350</span>
+ <span class="token punctuation">[</span><span class="token number">61</span><span class="token punctuation">]</span> <span class="token number">14.97857</span> <span class="token number">17.93824</span> <span class="token number">15.81937</span> <span class="token number">15.14789</span> <span class="token number">15.02264</span>
+ <span class="token punctuation">[</span><span class="token number">66</span><span class="token punctuation">]</span> <span class="token number">15.35681</span> <span class="token number">15.06818</span> <span class="token number">16.20024</span> <span class="token number">15.49239</span> <span class="token number">13.87530</span>
+ <span class="token punctuation">[</span><span class="token number">71</span><span class="token punctuation">]</span> <span class="token number">15.07941</span> <span class="token number">11.02497</span> <span class="token number">15.94322</span> <span class="token number">15.67173</span> <span class="token number">12.82916</span>
+ <span class="token punctuation">[</span><span class="token number">76</span><span class="token punctuation">]</span> <span class="token number">14.49088</span> <span class="token number">15.23593</span> <span class="token number">14.89429</span> <span class="token number">15.39066</span> <span class="token number">17.03379</span>
+ <span class="token punctuation">[</span><span class="token number">81</span><span class="token punctuation">]</span> <span class="token number">15.07567</span> <span class="token number">13.72972</span> <span class="token number">15.06769</span> <span class="token number">16.03017</span> <span class="token number">18.25667</span>
+ <span class="token punctuation">[</span><span class="token number">86</span><span class="token punctuation">]</span> <span class="token number">11.01588</span> <span class="token number">12.57675</span> <span class="token number">17.13522</span> <span class="token number">16.01980</span> <span class="token number">10.52023</span>
+ <span class="token punctuation">[</span><span class="token number">91</span><span class="token punctuation">]</span> <span class="token number">19.66291</span> <span class="token number">13.17814</span> <span class="token number">17.31925</span> <span class="token number">14.03456</span> <span class="token number">16.18037</span>
+ <span class="token punctuation">[</span><span class="token number">96</span><span class="token punctuation">]</span> <span class="token number">15.59317</span> <span class="token number">12.31323</span> <span class="token number">16.43977</span> <span class="token number">16.09725</span> <span class="token number">14.29555</span>
+ 
+ <span class="token operator">></span> round<span class="token punctuation">(</span>rnorm<span class="token punctuation">(</span>n <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">,</span>mean <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>sd <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">## 可用于取整数,每次运行都是不同正太分布的数字</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="与离散分布相关的函数"><a href="#与离散分布相关的函数" class="headerlink" title="与离散分布相关的函数"></a>与离散分布相关的函数</h4><!--<img src="https://s1.ax1x.com/2020/06/09/t5u0VU.png" alt="t5u0VU.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/09/t5u0VU.png" alt="t5u0VU.png"></p>
+<p>比如几种分布</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 集合分布</span>
+<span class="token operator">></span> ?Geometric
+<span class="token comment">## 超几何分布</span>
+<span class="token operator">></span> ?Hypergeometric<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这些函数的作用,,,</p>
+<ul>
+<li>可以生成这种函数的随机数,并绘制出对应的分布曲线来查看,比如<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> x <span class="token operator">=</span> rnorm<span class="token punctuation">(</span>n<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>mean <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">,</span>sd <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token operator">></span> qqnorm<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+<h4 id="随机数的生成"><a href="#随机数的生成" class="headerlink" title="随机数的生成"></a>随机数的生成</h4><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> runif<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">10</span>
+<span class="token comment">## 生成50个最小为1最大为100的随机数</span>
+<span class="token operator">></span> runif<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span>min<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>max<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>随机种子,要求复现,这时就要用到set.seed()如:</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 每次这样运行都可以得到同样的随机数</span>
+<span class="token operator">></span> set.seed<span class="token punctuation">(</span><span class="token number">666</span><span class="token punctuation">)</span>
+<span class="token operator">></span> runif<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">0.77436849</span> <span class="token number">0.19722419</span> <span class="token number">0.97801384</span> <span class="token number">0.20132735</span>
+ <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token number">0.36124443</span> <span class="token number">0.74261194</span> <span class="token number">0.97872844</span> <span class="token number">0.49811371</span>
+ <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span> <span class="token number">0.01331584</span> <span class="token number">0.25994613</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="44-描述性统计函数"><a href="#44-描述性统计函数" class="headerlink" title="44-描述性统计函数"></a>44-描述性统计函数</h2><h3 id="summary函数"><a href="#summary函数" class="headerlink" title="summary函数"></a>summary函数</h3><p>回归分析中大量的用到这个函数</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 提供了最小,四分位数,中位数,平均值,,最小值,,</span>
+<span class="token operator">></span> myvare <span class="token operator">=</span> mtcars<span class="token punctuation">[</span>c<span class="token punctuation">(</span><span class="token string">"mpg"</span><span class="token punctuation">,</span><span class="token string">"hp"</span><span class="token punctuation">,</span><span class="token string">"wt"</span><span class="token punctuation">,</span><span class="token string">"am"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">></span> summary<span class="token punctuation">(</span>myvare<span class="token punctuation">)</span>
+      mpg              hp              wt              am        
+ Min.   <span class="token operator">:</span><span class="token number">10.40</span>   Min.   <span class="token operator">:</span> <span class="token number">52.0</span>   Min.   <span class="token operator">:</span><span class="token number">1.513</span>   Min.   <span class="token operator">:</span><span class="token number">0.0000</span>  
+ <span class="token number">1</span>st Qu.<span class="token operator">:</span><span class="token number">15.43</span>   <span class="token number">1</span>st Qu.<span class="token operator">:</span> <span class="token number">96.5</span>   <span class="token number">1</span>st Qu.<span class="token operator">:</span><span class="token number">2.581</span>   <span class="token number">1</span>st Qu.<span class="token operator">:</span><span class="token number">0.0000</span>  
+ Median <span class="token operator">:</span><span class="token number">19.20</span>   Median <span class="token operator">:</span><span class="token number">123.0</span>   Median <span class="token operator">:</span><span class="token number">3.325</span>   Median <span class="token operator">:</span><span class="token number">0.0000</span>  
+ Mean   <span class="token operator">:</span><span class="token number">20.09</span>   Mean   <span class="token operator">:</span><span class="token number">146.7</span>   Mean   <span class="token operator">:</span><span class="token number">3.217</span>   Mean   <span class="token operator">:</span><span class="token number">0.4062</span>  
+ <span class="token number">3</span>rd Qu.<span class="token operator">:</span><span class="token number">22.80</span>   <span class="token number">3</span>rd Qu.<span class="token operator">:</span><span class="token number">180.0</span>   <span class="token number">3</span>rd Qu.<span class="token operator">:</span><span class="token number">3.610</span>   <span class="token number">3</span>rd Qu.<span class="token operator">:</span><span class="token number">1.0000</span>  
+ Max.   <span class="token operator">:</span><span class="token number">33.90</span>   Max.   <span class="token operator">:</span><span class="token number">335.0</span>   Max.   <span class="token operator">:</span><span class="token number">5.424</span>   Max.   <span class="token operator">:</span><span class="token number">1.0000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="fivenum"><a href="#fivenum" class="headerlink" title="fivenum()"></a>fivenum()</h3><p>与summary类似可以返回五个数,最小值,四分位数,中位数</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> fivenum<span class="token punctuation">(</span>myvare<span class="token operator">$</span>hp<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token number">52</span>  <span class="token number">96</span> <span class="token number">123</span> <span class="token number">180</span> <span class="token number">335</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="pastecs包"><a href="#pastecs包" class="headerlink" title="pastecs包"></a>pastecs包</h3><p>这个可以计算种类繁多的统计量</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 默认的 basic=T 计算基础统计值</span>
+<span class="token operator">></span> stat.desc<span class="token punctuation">(</span>myvare<span class="token punctuation">)</span>
+                     mpg           hp          wt          am
+nbr.val       <span class="token number">32.0000000</span>   <span class="token number">32.0000000</span>  <span class="token number">32.0000000</span> <span class="token number">32.00000000</span>
+nbr.null       <span class="token number">0.0000000</span>    <span class="token number">0.0000000</span>   <span class="token number">0.0000000</span> <span class="token number">19.00000000</span>
+nbr.na         <span class="token number">0.0000000</span>    <span class="token number">0.0000000</span>   <span class="token number">0.0000000</span>  <span class="token number">0.00000000</span>
+min           <span class="token number">10.4000000</span>   <span class="token number">52.0000000</span>   <span class="token number">1.5130000</span>  <span class="token number">0.00000000</span>
+max           <span class="token number">33.9000000</span>  <span class="token number">335.0000000</span>   <span class="token number">5.4240000</span>  <span class="token number">1.00000000</span>
+range         <span class="token number">23.5000000</span>  <span class="token number">283.0000000</span>   <span class="token number">3.9110000</span>  <span class="token number">1.00000000</span>
+sum          <span class="token number">642.9000000</span> <span class="token number">4694.0000000</span> <span class="token number">102.9520000</span> <span class="token number">13.00000000</span>
+median        <span class="token number">19.2000000</span>  <span class="token number">123.0000000</span>   <span class="token number">3.3250000</span>  <span class="token number">0.00000000</span>
+mean          <span class="token number">20.0906250</span>  <span class="token number">146.6875000</span>   <span class="token number">3.2172500</span>  <span class="token number">0.40625000</span>
+SE.mean        <span class="token number">1.0654240</span>   <span class="token number">12.1203173</span>   <span class="token number">0.1729685</span>  <span class="token number">0.08820997</span>
+CI.mean.<span class="token number">0.95</span>   <span class="token number">2.1729465</span>   <span class="token number">24.7195501</span>   <span class="token number">0.3527715</span>  <span class="token number">0.17990541</span>
+var           <span class="token number">36.3241028</span> <span class="token number">4700.8669355</span>   <span class="token number">0.9573790</span>  <span class="token number">0.24899194</span>
+std.dev        <span class="token number">6.0269481</span>   <span class="token number">68.5628685</span>   <span class="token number">0.9784574</span>  <span class="token number">0.49899092</span>
+coef.var       <span class="token number">0.2999881</span>    <span class="token number">0.4674077</span>   <span class="token number">0.3041285</span>  <span class="token number">1.22828533</span>
+
+<span class="token comment">## 计算描述性统计</span>
+<span class="token operator">></span> stat.desc<span class="token punctuation">(</span>myvare<span class="token punctuation">,</span>basic <span class="token operator">=</span> T<span class="token punctuation">)</span>
+                     mpg           hp          wt          am
+nbr.val       <span class="token number">32.0000000</span>   <span class="token number">32.0000000</span>  <span class="token number">32.0000000</span> <span class="token number">32.00000000</span>
+nbr.null       <span class="token number">0.0000000</span>    <span class="token number">0.0000000</span>   <span class="token number">0.0000000</span> <span class="token number">19.00000000</span>
+nbr.na         <span class="token number">0.0000000</span>    <span class="token number">0.0000000</span>   <span class="token number">0.0000000</span>  <span class="token number">0.00000000</span>
+min           <span class="token number">10.4000000</span>   <span class="token number">52.0000000</span>   <span class="token number">1.5130000</span>  <span class="token number">0.00000000</span>
+max           <span class="token number">33.9000000</span>  <span class="token number">335.0000000</span>   <span class="token number">5.4240000</span>  <span class="token number">1.00000000</span>
+range         <span class="token number">23.5000000</span>  <span class="token number">283.0000000</span>   <span class="token number">3.9110000</span>  <span class="token number">1.00000000</span>
+sum          <span class="token number">642.9000000</span> <span class="token number">4694.0000000</span> <span class="token number">102.9520000</span> <span class="token number">13.00000000</span>
+median        <span class="token number">19.2000000</span>  <span class="token number">123.0000000</span>   <span class="token number">3.3250000</span>  <span class="token number">0.00000000</span>
+mean          <span class="token number">20.0906250</span>  <span class="token number">146.6875000</span>   <span class="token number">3.2172500</span>  <span class="token number">0.40625000</span>
+SE.mean        <span class="token number">1.0654240</span>   <span class="token number">12.1203173</span>   <span class="token number">0.1729685</span>  <span class="token number">0.08820997</span>
+CI.mean.<span class="token number">0.95</span>   <span class="token number">2.1729465</span>   <span class="token number">24.7195501</span>   <span class="token number">0.3527715</span>  <span class="token number">0.17990541</span>
+var           <span class="token number">36.3241028</span> <span class="token number">4700.8669355</span>   <span class="token number">0.9573790</span>  <span class="token number">0.24899194</span>
+std.dev        <span class="token number">6.0269481</span>   <span class="token number">68.5628685</span>   <span class="token number">0.9784574</span>  <span class="token number">0.49899092</span>
+coef.var       <span class="token number">0.2999881</span>    <span class="token number">0.4674077</span>   <span class="token number">0.3041285</span>  <span class="token number">1.22828533</span>
+
+<span class="token comment">## norm 就会计算一些统计值,如正太分布统计量,偏度,峰度等</span>
+<span class="token operator">></span> stat.desc<span class="token punctuation">(</span>myvare<span class="token punctuation">,</span>norm <span class="token operator">=</span> T<span class="token punctuation">)</span>
+                     mpg            hp           wt            am
+nbr.val       <span class="token number">32.0000000</span>   <span class="token number">32.00000000</span>  <span class="token number">32.00000000</span>  <span class="token number">3.200000e+01</span>
+nbr.null       <span class="token number">0.0000000</span>    <span class="token number">0.00000000</span>   <span class="token number">0.00000000</span>  <span class="token number">1.900000e+01</span>
+nbr.na         <span class="token number">0.0000000</span>    <span class="token number">0.00000000</span>   <span class="token number">0.00000000</span>  <span class="token number">0.000000e+00</span>
+min           <span class="token number">10.4000000</span>   <span class="token number">52.00000000</span>   <span class="token number">1.51300000</span>  <span class="token number">0.000000e+00</span>
+max           <span class="token number">33.9000000</span>  <span class="token number">335.00000000</span>   <span class="token number">5.42400000</span>  <span class="token number">1.000000e+00</span>
+range         <span class="token number">23.5000000</span>  <span class="token number">283.00000000</span>   <span class="token number">3.91100000</span>  <span class="token number">1.000000e+00</span>
+sum          <span class="token number">642.9000000</span> <span class="token number">4694.00000000</span> <span class="token number">102.95200000</span>  <span class="token number">1.300000e+01</span>
+median        <span class="token number">19.2000000</span>  <span class="token number">123.00000000</span>   <span class="token number">3.32500000</span>  <span class="token number">0.000000e+00</span>
+mean          <span class="token number">20.0906250</span>  <span class="token number">146.68750000</span>   <span class="token number">3.21725000</span>  <span class="token number">4.062500e-01</span>
+SE.mean        <span class="token number">1.0654240</span>   <span class="token number">12.12031731</span>   <span class="token number">0.17296847</span>  <span class="token number">8.820997e-02</span>
+CI.mean.<span class="token number">0.95</span>   <span class="token number">2.1729465</span>   <span class="token number">24.71955013</span>   <span class="token number">0.35277153</span>  <span class="token number">1.799054e-01</span>
+var           <span class="token number">36.3241028</span> <span class="token number">4700.86693548</span>   <span class="token number">0.95737897</span>  <span class="token number">2.489919e-01</span>
+std.dev        <span class="token number">6.0269481</span>   <span class="token number">68.56286849</span>   <span class="token number">0.97845744</span>  <span class="token number">4.989909e-01</span>
+coef.var       <span class="token number">0.2999881</span>    <span class="token number">0.46740771</span>   <span class="token number">0.30412851</span>  <span class="token number">1.228285e+00</span>
+skewness       <span class="token number">0.6106550</span>    <span class="token number">0.72602366</span>   <span class="token number">0.42314646</span>  <span class="token number">3.640159e-01</span>
+skew.<span class="token number">2</span>SE       <span class="token number">0.7366922</span>    <span class="token number">0.87587259</span>   <span class="token number">0.51048252</span>  <span class="token number">4.391476e-01</span>
+kurtosis      <span class="token operator">-</span><span class="token number">0.3727660</span>   <span class="token operator">-</span><span class="token number">0.13555112</span>  <span class="token operator">-</span><span class="token number">0.02271075</span> <span class="token operator">-</span><span class="token number">1.924741e+00</span>
+kurt.<span class="token number">2</span>SE      <span class="token operator">-</span><span class="token number">0.2302812</span>   <span class="token operator">-</span><span class="token number">0.08373853</span>  <span class="token operator">-</span><span class="token number">0.01402987</span> <span class="token operator">-</span><span class="token number">1.189035e+00</span>
+normtest.W     <span class="token number">0.9475647</span>    <span class="token number">0.93341934</span>   <span class="token number">0.94325772</span>  <span class="token number">6.250744e-01</span>
+normtest.p     <span class="token number">0.1228814</span>    <span class="token number">0.04880824</span>   <span class="token number">0.09265499</span>  <span class="token number">7.836354e-08</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="doBy包"><a href="#doBy包" class="headerlink" title="doBy包"></a>doBy包</h3><p>可以一次返回多个计算统计量</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 右边的变量是分组型的分组变量,data接一个数据框,fun接一个函数,可以是自定义函数</span>
+<span class="token operator">></span> summaryBy<span class="token punctuation">(</span>mpg<span class="token operator">+</span>hp<span class="token operator">+</span>wt <span class="token operator">~</span> am<span class="token punctuation">,</span>data <span class="token operator">=</span> myvare<span class="token punctuation">,</span>FUN <span class="token operator">=</span> mean<span class="token punctuation">)</span>
+  am mpg.mean  hp.mean  wt.mean
+<span class="token number">1</span>  <span class="token number">0</span> <span class="token number">17.14737</span> <span class="token number">160.2632</span> <span class="token number">3.768895</span>
+<span class="token number">2</span>  <span class="token number">1</span> <span class="token number">24.39231</span> <span class="token number">126.8462</span> <span class="token number">2.411000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="45-频数统计函数"><a href="#45-频数统计函数" class="headerlink" title="45-频数统计函数"></a>45-频数统计函数</h2><p>如果一个数据是因子,因子是直接可以进行分组的</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> mt_cyl <span class="token operator">=</span> as.factor<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>cyl<span class="token punctuation">)</span>
+<span class="token operator">></span> mt_cyl
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">6</span> <span class="token number">6</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">4</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">4</span> <span class="token number">4</span> <span class="token number">4</span> <span class="token number">4</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token number">8</span>
+<span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span> <span class="token number">4</span> <span class="token number">4</span> <span class="token number">4</span> <span class="token number">8</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">4</span>
+Levels<span class="token operator">:</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span>
+<span class="token operator">></span> split<span class="token punctuation">(</span>mtcars<span class="token punctuation">,</span>mt_cyl<span class="token punctuation">)</span>
+<span class="token comment">## 这样就可以根据气缸的个数对汽车进行分组</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果不是一个明显的因子,可以用cut进行分割</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 10到50,以10为步长进行分组</span>
+<span class="token operator">></span>  cut<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>mpg<span class="token punctuation">,</span>c<span class="token punctuation">(</span>seq<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span>
+ <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">13</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">19</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span>
+Levels<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">]</span>
+
+<span class="token comment">## 然后直接使用table进行统计</span>
+<span class="token operator">></span> table<span class="token punctuation">(</span>cut<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>mpg<span class="token punctuation">,</span>c<span class="token punctuation">(</span>seq<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">]</span> 
+     <span class="token number">18</span>      <span class="token number">10</span>       <span class="token number">4</span>       <span class="token number">0</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="prop-table计算频率函数"><a href="#prop-table计算频率函数" class="headerlink" title="prop.table计算频率函数"></a>prop.table计算频率函数</h4><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> prop.table<span class="token punctuation">(</span>table<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>cyl<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+      <span class="token number">4</span>       <span class="token number">6</span>       <span class="token number">8</span> 
+<span class="token number">0.34375</span> <span class="token number">0.21875</span> <span class="token number">0.43750</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="vcd"><a href="#vcd" class="headerlink" title="vcd"></a>vcd</h4><p>如果是二维的数据框呢</p>
+<ul>
+<li>如果是用table的话<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 安慰剂和治疗组的区分,这个在实验的时候很常用</span>
+<span class="token operator">></span> table<span class="token punctuation">(</span>Arthritis<span class="token operator">$</span>Treatment<span class="token punctuation">,</span>Arthritis<span class="token operator">$</span>Improved<span class="token punctuation">)</span>
+         
+          None Some Marked
+  Placebo   <span class="token number">29</span>    <span class="token number">7</span>      <span class="token number">7</span>
+  Treated   <span class="token number">13</span>    <span class="token number">7</span>     <span class="token number">21</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h4 id="xtabs"><a href="#xtabs" class="headerlink" title="xtabs"></a>xtabs</h4><p>这个函数是可以自定义公式</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> xtabs<span class="token punctuation">(</span><span class="token operator">~</span> Treatment <span class="token operator">+</span> Improved<span class="token punctuation">,</span>data <span class="token operator">=</span> Arthritis<span class="token punctuation">)</span>
+         Improved
+Treatment None Some Marked
+  Placebo   <span class="token number">29</span>    <span class="token number">7</span>      <span class="token number">7</span>
+  Treated   <span class="token number">13</span>    <span class="token number">7</span>     <span class="token number">21</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>二维列联表可以用margin.table</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 这里的1代表的是行</span>
+<span class="token operator">></span> x <span class="token operator">=</span> xtabs<span class="token punctuation">(</span><span class="token operator">~</span> Treatment <span class="token operator">+</span> Improved<span class="token punctuation">,</span>data <span class="token operator">=</span> Arthritis<span class="token punctuation">)</span>
+<span class="token operator">></span> margin.table<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">84</span>
+<span class="token operator">></span> margin.table<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+Treatment
+Placebo Treated 
+     <span class="token number">43</span>      <span class="token number">41</span>
+
+<span class="token comment">## 频率占比统计</span>
+<span class="token operator">></span> prop.table<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+         Improved
+Treatment      None      Some    Marked
+  Placebo <span class="token number">0.6744186</span> <span class="token number">0.1627907</span> <span class="token number">0.1627907</span>
+  Treated <span class="token number">0.3170732</span> <span class="token number">0.1707317</span> <span class="token number">0.5121951</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>addmargins()可以直接将算出的和添加到表中,也可以设置1和2,只添加行或列.</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> addmargins<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+         Improved
+Treatment None Some Marked Sum
+  Placebo   <span class="token number">29</span>    <span class="token number">7</span>      <span class="token number">7</span>  <span class="token number">43</span>
+  Treated   <span class="token number">13</span>    <span class="token number">7</span>     <span class="token number">21</span>  <span class="token number">41</span>
+  Sum       <span class="token number">42</span>   <span class="token number">14</span>     <span class="token number">28</span>  <span class="token number">84</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="三维列联表的计算"><a href="#三维列联表的计算" class="headerlink" title="三维列联表的计算"></a>三维列联表的计算</h3><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> x <span class="token operator">=</span> xtabs<span class="token punctuation">(</span><span class="token operator">~</span> Treatment <span class="token operator">+</span> Improved <span class="token operator">+</span> Sex<span class="token punctuation">,</span>data <span class="token operator">=</span> Arthritis<span class="token punctuation">)</span>
+<span class="token operator">></span> x
+<span class="token punctuation">,</span> <span class="token punctuation">,</span> Sex <span class="token operator">=</span> Female
+
+         Improved
+Treatment None Some Marked
+  Placebo   <span class="token number">19</span>    <span class="token number">7</span>      <span class="token number">6</span>
+  Treated    <span class="token number">6</span>    <span class="token number">5</span>     <span class="token number">16</span>
+
+<span class="token punctuation">,</span> <span class="token punctuation">,</span> Sex <span class="token operator">=</span> Male
+
+         Improved
+Treatment None Some Marked
+  Placebo   <span class="token number">10</span>    <span class="token number">0</span>      <span class="token number">1</span>
+  Treated    <span class="token number">7</span>    <span class="token number">2</span>      <span class="token number">5</span>
+
+<span class="token comment">## 这样的表可能不是很好看,ftable()可以将表转换成评估式的列联表</span>
+<span class="token operator">></span> ftable<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+                   Sex Female Male
+Treatment Improved                
+Placebo   None             <span class="token number">19</span>   <span class="token number">10</span>
+          Some              <span class="token number">7</span>    <span class="token number">0</span>
+          Marked            <span class="token number">6</span>    <span class="token number">1</span>
+Treated   None              <span class="token number">6</span>    <span class="token number">7</span>
+          Some              <span class="token number">5</span>    <span class="token number">2</span>
+          Marked           <span class="token number">16</span>    <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="46-R中的独立性检验函数"><a href="#46-R中的独立性检验函数" class="headerlink" title="46-R中的独立性检验函数"></a>46-R中的独立性检验函数</h2><p>独立检验是根据频数信息判断两类因子彼此相关或相互独立的假设检.所谓独立就是看看变量之间是否是独立的.</p>
+<p>主要有三个检验方法</p>
+<ol>
+<li>卡方检验</li>
+<li>Fisher检验</li>
+<li>Cochran-Mantel-Haenszel检验</li>
+</ol>
+<h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p>假设检验是梳理统计学中根据一定假设条件由样本推断总体的一种方法.</p>
+<p>原假设–没有发生;</p>
+<p>备择假设–发生了;</p>
+<p>具体作法是:根据问题的需要对所研究的总体作某种假设,记作HO ;选取合适的统计量,这个统计量的选取要使得在假设H0成立时,其分布为已知;由实测的样本,计算出统计量的值,并根据预先给定的显著性水平进行检验,作出拒绝或接受假设HO的判断。</p>
+<h3 id="p-value-probability的值"><a href="#p-value-probability的值" class="headerlink" title="p-value probability的值"></a>p-value probability的值</h3><p>是一个通过计算得到的概率值,也就是原假设为真时,得到最大的或者超出所得到的检验统计量的概率.</p>
+<p>一般将p值定位到0.05,当p &lt; 0.05拒绝原假设,p &gt; 0.05,不拒绝原假设.</p>
+<p>简单的理解就是p值越小原假设越不靠谱,拒绝它,p值越大,说明原假设越靠谱,不拒绝它</p>
+<p>p值越小相关性越大</p>
+<p>以上次药物的有效性为例,进行卡方检验</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> mytable <span class="token operator">=</span> table<span class="token punctuation">(</span>Arthritis<span class="token operator">$</span>Treatment<span class="token punctuation">,</span>Arthritis<span class="token operator">$</span>Improved<span class="token punctuation">)</span>
+<span class="token operator">></span> chisq.test<span class="token punctuation">(</span>mytable<span class="token punctuation">)</span>
+
+	Pearson's Chi<span class="token operator">-</span>squared test
+
+data<span class="token operator">:</span>  mytable
+X<span class="token operator">-</span>squared <span class="token operator">=</span> <span class="token number">13.055</span><span class="token punctuation">,</span> df <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">0.001463</span>
+<span class="token comment">## p值为0.001463说明两个变量之间是有关系的,说明药物是有效果的</span>
+
+<span class="token operator">></span> mytable2 <span class="token operator">=</span> table<span class="token punctuation">(</span>Arthritis<span class="token operator">$</span>Sex<span class="token punctuation">,</span>Arthritis<span class="token operator">$</span>Improved<span class="token punctuation">)</span>
+<span class="token operator">></span> chisq.test<span class="token punctuation">(</span>mytable2<span class="token punctuation">)</span>
+
+	Pearson's Chi<span class="token operator">-</span>squared test
+
+data<span class="token operator">:</span>  mytable2
+X<span class="token operator">-</span>squared <span class="token operator">=</span> <span class="token number">4.8407</span><span class="token punctuation">,</span> df <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">0.08889</span>
+<span class="token comment">## 这里检测的是性别与改善之间的关系</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="fisher-精确检验"><a href="#fisher-精确检验" class="headerlink" title="fisher 精确检验"></a>fisher 精确检验</h3><p>也是独立性检验,原理是行和列是独立</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> fisher.test<span class="token punctuation">(</span>mytable<span class="token punctuation">)</span>
+
+	Fisher's Exact Test <span class="token keyword">for</span> Count Data
+
+data<span class="token operator">:</span>  mytable
+p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">0.001393</span>
+alternative hypothesis<span class="token operator">:</span> two.sided
+<span class="token comment">## 与卡方检验是一致的,计算的也是P值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="mantelhaen-test-检测"><a href="#mantelhaen-test-检测" class="headerlink" title="mantelhaen.test 检测"></a>mantelhaen.test 检测</h3><p>两个名义变量在第三个变量每一层中都是条件独立的,需要三个变量</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> mytable3 <span class="token operator">=</span> xtabs<span class="token punctuation">(</span><span class="token operator">~</span>Treatment <span class="token operator">+</span> Improved <span class="token operator">+</span> Sex<span class="token punctuation">,</span>data <span class="token operator">=</span> Arthritis<span class="token punctuation">)</span>
+<span class="token operator">></span> mytable3
+<span class="token punctuation">,</span> <span class="token punctuation">,</span> Sex <span class="token operator">=</span> Female
+
+         Improved
+Treatment None Some Marked
+  Placebo   <span class="token number">19</span>    <span class="token number">7</span>      <span class="token number">6</span>
+  Treated    <span class="token number">6</span>    <span class="token number">5</span>     <span class="token number">16</span>
+
+<span class="token punctuation">,</span> <span class="token punctuation">,</span> Sex <span class="token operator">=</span> Male
+
+         Improved
+Treatment None Some Marked
+  Placebo   <span class="token number">10</span>    <span class="token number">0</span>      <span class="token number">1</span>
+  Treated    <span class="token number">7</span>    <span class="token number">2</span>      <span class="token number">5</span>
+
+<span class="token operator">></span> mantelhaen.test<span class="token punctuation">(</span>mytable3<span class="token punctuation">)</span>
+
+	Cochran<span class="token operator">-</span>Mantel<span class="token operator">-</span>Haenszel test
+
+data<span class="token operator">:</span>  mytable3
+Cochran<span class="token operator">-</span>Mantel<span class="token operator">-</span>Haenszel M<span class="token operator">^</span><span class="token number">2</span> <span class="token operator">=</span> <span class="token number">14.632</span><span class="token punctuation">,</span> df <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">0.0006647</span>
+
+<span class="token comment">## 这里的p值很小,因为列联表的结果是以性别来区分的,这里表示药物的治疗在性别的每一个水平上不独立.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里的独立性检验的顺序是很总要的</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 这里变量的顺序是很重要的</span>
+<span class="token operator">></span> mytable3 <span class="token operator">=</span> xtabs<span class="token punctuation">(</span><span class="token operator">~</span>Treatment <span class="token operator">+</span> Sex <span class="token operator">+</span> Improved <span class="token punctuation">,</span>data <span class="token operator">=</span> Arthritis<span class="token punctuation">)</span>
+<span class="token operator">></span> mantelhaen.test<span class="token punctuation">(</span>mytable3<span class="token punctuation">)</span>
+
+	Mantel<span class="token operator">-</span>Haenszel chi<span class="token operator">-</span>squared test with continuity correction
+
+data<span class="token operator">:</span>  mytable3
+Mantel<span class="token operator">-</span>Haenszel X<span class="token operator">-</span>squared <span class="token operator">=</span> <span class="token number">2.0863</span><span class="token punctuation">,</span> df <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">0.1486</span>
+alternative hypothesis<span class="token operator">:</span> true common odds ratio is not equal to <span class="token number">1</span>
+<span class="token number">95</span> percent confidence interval<span class="token operator">:</span>
+ <span class="token number">0.8566711</span> <span class="token number">8.0070521</span>
+sample estimates<span class="token operator">:</span>
+common odds ratio 
+         <span class="token number">2.619048</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>也由很多的包可以进行独立性检验</p>
+<h2 id="47-相关性分析函数"><a href="#47-相关性分析函数" class="headerlink" title="47-相关性分析函数"></a>47-相关性分析函数</h2><p>相关性分析是指对两个或多个具备相关性的变量元素进行分析,从而衡量两个变量因素的相关密切程度。相关性的元素之间需要存在一定的联系或者概率才可以进行相关性分析。</p>
+<p>简单来说就是变量之间是否有关系。</p>
+<p>两个变量如果不独立就可以进行相关性检验,可能是正相关用”+”表示,也可能是负相关”-“,</p>
+<p>相关性衡量指标,指标表示是都是同一个东西,只是表示的方法指标不同而已</p>
+<ul>
+<li>Pearson相关系数</li>
+<li>Spearman相关系数</li>
+<li>Kendall相关系数</li>
+<li>偏相关系数</li>
+<li>多分格相关系数</li>
+<li>多系列相关系数</li>
+</ul>
+<p>计算相关性系数都是使用同一个函数cor(),可以计算三种相关系数,pearson,kendall,spearman,默认是pearson</p>
+<h4 id="cor函数"><a href="#cor函数" class="headerlink" title="cor函数"></a>cor函数</h4><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 这里计算一下谋杀率和什么有关</span>
+<span class="token operator">></span> ?cor
+<span class="token operator">></span> state.x77
+<span class="token operator">></span> cor<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span>
+            Population     Income  Illiteracy    Life Exp     Murder     HS Grad      Frost        Area
+Population  <span class="token number">1.00000000</span>  <span class="token number">0.2082276</span>  <span class="token number">0.10762237</span> <span class="token operator">-</span><span class="token number">0.06805195</span>  <span class="token number">0.3436428</span> <span class="token operator">-</span><span class="token number">0.09848975</span> <span class="token operator">-</span><span class="token number">0.3321525</span>  <span class="token number">0.02254384</span>
+Income      <span class="token number">0.20822756</span>  <span class="token number">1.0000000</span> <span class="token operator">-</span><span class="token number">0.43707519</span>  <span class="token number">0.34025534</span> <span class="token operator">-</span><span class="token number">0.2300776</span>  <span class="token number">0.61993232</span>  <span class="token number">0.2262822</span>  <span class="token number">0.36331544</span>
+Illiteracy  <span class="token number">0.10762237</span> <span class="token operator">-</span><span class="token number">0.4370752</span>  <span class="token number">1.00000000</span> <span class="token operator">-</span><span class="token number">0.58847793</span>  <span class="token number">0.7029752</span> <span class="token operator">-</span><span class="token number">0.65718861</span> <span class="token operator">-</span><span class="token number">0.6719470</span>  <span class="token number">0.07726113</span>
+Life Exp   <span class="token operator">-</span><span class="token number">0.06805195</span>  <span class="token number">0.3402553</span> <span class="token operator">-</span><span class="token number">0.58847793</span>  <span class="token number">1.00000000</span> <span class="token operator">-</span><span class="token number">0.7808458</span>  <span class="token number">0.58221620</span>  <span class="token number">0.2620680</span> <span class="token operator">-</span><span class="token number">0.10733194</span>
+Murder      <span class="token number">0.34364275</span> <span class="token operator">-</span><span class="token number">0.2300776</span>  <span class="token number">0.70297520</span> <span class="token operator">-</span><span class="token number">0.78084575</span>  <span class="token number">1.0000000</span> <span class="token operator">-</span><span class="token number">0.48797102</span> <span class="token operator">-</span><span class="token number">0.5388834</span>  <span class="token number">0.22839021</span>
+HS Grad    <span class="token operator">-</span><span class="token number">0.09848975</span>  <span class="token number">0.6199323</span> <span class="token operator">-</span><span class="token number">0.65718861</span>  <span class="token number">0.58221620</span> <span class="token operator">-</span><span class="token number">0.4879710</span>  <span class="token number">1.00000000</span>  <span class="token number">0.3667797</span>  <span class="token number">0.33354187</span>
+Frost      <span class="token operator">-</span><span class="token number">0.33215245</span>  <span class="token number">0.2262822</span> <span class="token operator">-</span><span class="token number">0.67194697</span>  <span class="token number">0.26206801</span> <span class="token operator">-</span><span class="token number">0.5388834</span>  <span class="token number">0.36677970</span>  <span class="token number">1.0000000</span>  <span class="token number">0.05922910</span>
+Area        <span class="token number">0.02254384</span>  <span class="token number">0.3633154</span>  <span class="token number">0.07726113</span> <span class="token operator">-</span><span class="token number">0.10733194</span>  <span class="token number">0.2283902</span>  <span class="token number">0.33354187</span>  <span class="token number">0.0592291</span>  <span class="token number">1.00000000</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这是一个对角矩阵对角线是自己与自己的相关性,都是1,最大相关系数.正的就是正相关,负的就是不相关,或反着来.</p>
+<h4 id="cov函数"><a href="#cov函数" class="headerlink" title="cov函数"></a>cov函数</h4><p>可以用来计算协方差,基本与cor是一致的</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> cov<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span>
+              Population        Income   Illiteracy      Life Exp       Murder       HS Grad        Frost          Area
+Population <span class="token number">19931683.7588</span>   <span class="token number">571229.7796</span>  <span class="token number">292.8679592</span> <span class="token operator">-</span><span class="token number">4.078425e+02</span>  <span class="token number">5663.523714</span>  <span class="token operator">-</span><span class="token number">3551.509551</span> <span class="token operator">-</span><span class="token number">77081.97265</span>  <span class="token number">8.587917e+06</span>
+Income       <span class="token number">571229.7796</span>   <span class="token number">377573.3061</span> <span class="token operator">-</span><span class="token number">163.7020408</span>  <span class="token number">2.806632e+02</span>  <span class="token operator">-</span><span class="token number">521.894286</span>   <span class="token number">3076.768980</span>   <span class="token number">7227.60408</span>  <span class="token number">1.904901e+07</span>
+Illiteracy      <span class="token number">292.8680</span>     <span class="token operator">-</span><span class="token number">163.7020</span>    <span class="token number">0.3715306</span> <span class="token operator">-</span><span class="token number">4.815122e-01</span>     <span class="token number">1.581776</span>     <span class="token operator">-</span><span class="token number">3.235469</span>    <span class="token operator">-</span><span class="token number">21.29000</span>  <span class="token number">4.018337e+03</span>
+Life Exp       <span class="token operator">-</span><span class="token number">407.8425</span>      <span class="token number">280.6632</span>   <span class="token operator">-</span><span class="token number">0.4815122</span>  <span class="token number">1.802020e+00</span>    <span class="token operator">-</span><span class="token number">3.869480</span>      <span class="token number">6.312685</span>     <span class="token number">18.28678</span> <span class="token operator">-</span><span class="token number">1.229410e+04</span>
+Murder         <span class="token number">5663.5237</span>     <span class="token operator">-</span><span class="token number">521.8943</span>    <span class="token number">1.5817755</span> <span class="token operator">-</span><span class="token number">3.869480e+00</span>    <span class="token number">13.627465</span>    <span class="token operator">-</span><span class="token number">14.549616</span>   <span class="token operator">-</span><span class="token number">103.40600</span>  <span class="token number">7.194043e+04</span>
+HS Grad       <span class="token operator">-</span><span class="token number">3551.5096</span>     <span class="token number">3076.7690</span>   <span class="token operator">-</span><span class="token number">3.2354694</span>  <span class="token number">6.312685e+00</span>   <span class="token operator">-</span><span class="token number">14.549616</span>     <span class="token number">65.237894</span>    <span class="token number">153.99216</span>  <span class="token number">2.298732e+05</span>
+Frost        <span class="token operator">-</span><span class="token number">77081.9727</span>     <span class="token number">7227.6041</span>  <span class="token operator">-</span><span class="token number">21.2900000</span>  <span class="token number">1.828678e+01</span>  <span class="token operator">-</span><span class="token number">103.406000</span>    <span class="token number">153.992163</span>   <span class="token number">2702.00857</span>  <span class="token number">2.627039e+05</span>
+Area        <span class="token number">8587916.9494</span> <span class="token number">19049013.7510</span> <span class="token number">4018.3371429</span> <span class="token operator">-</span><span class="token number">1.229410e+04</span> <span class="token number">71940.429959</span> <span class="token number">229873.192816</span> <span class="token number">262703.89306</span>  <span class="token number">7.280748e+09</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果要精准的显示谋杀率和哪些指数有关</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> colnames<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token string">"Population"</span> <span class="token string">"Income"</span>     <span class="token string">"Illiteracy"</span> <span class="token string">"Life Exp"</span>  
+<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token string">"Murder"</span>     <span class="token string">"HS Grad"</span>    <span class="token string">"Frost"</span>      <span class="token string">"Area"</span>      
+<span class="token operator">></span> x <span class="token operator">=</span> state.x77<span class="token punctuation">[</span><span class="token punctuation">,</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">></span> y <span class="token operator">=</span> state.x77<span class="token punctuation">[</span><span class="token punctuation">,</span>c<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">></span> cor<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span>
+              Life Exp     Murder
+Population <span class="token operator">-</span><span class="token number">0.06805195</span>  <span class="token number">0.3436428</span>
+Income      <span class="token number">0.34025534</span> <span class="token operator">-</span><span class="token number">0.2300776</span>
+Illiteracy <span class="token operator">-</span><span class="token number">0.58847793</span>  <span class="token number">0.7029752</span>
+HS Grad     <span class="token number">0.58221620</span> <span class="token operator">-</span><span class="token number">0.4879710</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>cor函数只能计算三种算法,例如偏相关系数,多分隔系数,多系列系数,等.</p>
+<h4 id="偏相关系数"><a href="#偏相关系数" class="headerlink" title="偏相关系数"></a>偏相关系数</h4><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 第一个参数是(前两个是要计算数值的下标,其余的是条件变量的下标),第二个参数是cov计算出来的协方差结果.</span>
+<span class="token operator">></span> ?pcor
+<span class="token operator">></span> colnames<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token string">"Population"</span> <span class="token string">"Income"</span>     <span class="token string">"Illiteracy"</span> <span class="token string">"Life Exp"</span>  
+<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token string">"Murder"</span>     <span class="token string">"HS Grad"</span>    <span class="token string">"Frost"</span>      <span class="token string">"Area"</span> 
+<span class="token operator">></span> pcor<span class="token punctuation">(</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cov<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">0.3462724</span>
+<span class="token comment">## 计算出偏相关系数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">theing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://theing.gitee.io/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-er/">https://theing.gitee.io/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-er/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">theing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">R语言数据分析</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'c9A3NJapA0GqVqdjIanTXvWV-gzGzoHsz',
+        appKey: 'siVPq9lDAGz8yClxLOmoMo6I',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '随便说点什么吧！'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-san/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="R语言与数据分析（三）">
+                        
+                        <span class="card-title">R语言与数据分析（三）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+喜欢一件事就去争取吧。
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                    数据分析
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">R语言数据分析</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-yi/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="R语言与数据分析（一）">
+                        
+                        <span class="card-title">R语言与数据分析（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+喜欢一件事就去争取吧。
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                    数据分析
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">R语言数据分析</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" ">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="694251243"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.5'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m12 l12 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">theing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <!-- <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> -->
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+
+</html>

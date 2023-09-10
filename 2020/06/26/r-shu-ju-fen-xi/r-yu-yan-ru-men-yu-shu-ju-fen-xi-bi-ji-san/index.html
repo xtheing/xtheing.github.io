@@ -1,0 +1,1812 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="R语言与数据分析（三）, 幽狼的博客">
+    <meta name="description" content="无论处境，泰然处之">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>R语言与数据分析（三） | 幽狼的博客</title>
+    <link rel="icon" type="image/png" href="/auther2.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/auther2.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">幽狼的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>书单</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>电影</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/games">
+          
+          <i class="fas fa-file-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>游戏</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/auther2.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">幽狼的博客</div>
+        <div class="logo-desc">
+            
+            无论处境，泰然处之
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>书单</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>电影</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/games " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-file-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>游戏</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">R语言与数据分析（三）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+        margin: 0.5rem 0px 0rem 0px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">R语言数据分析</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                数据分析
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-06-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-09-10
+                </div>
+                
+
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote class="blockquote-center">
+喜欢一件事就去争取吧。
+</blockquote>
+<span id="more"></span>
+
+<h2 id="48-相关性检验函数"><a href="#48-相关性检验函数" class="headerlink" title="48-相关性检验函数"></a>48-相关性检验函数</h2><p>在计算好相关性系数之后就可以进行统计学的显著性检验</p>
+<p>需要量化才能证明两个系数的相关性</p>
+<p>还是之前的例子,检测下文盲率和谋杀率之间的关系</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> library<span class="token punctuation">(</span>ggm<span class="token punctuation">)</span>
+<span class="token operator">></span> ?cor.test
+<span class="token operator">></span> cor.test<span class="token punctuation">(</span>state.x77<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>state.x77<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+	Pearson's product<span class="token operator">-</span>moment correlation
+
+data<span class="token operator">:</span>  state.x77<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> and state.x77<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+t <span class="token operator">=</span> <span class="token number">6.8479</span><span class="token punctuation">,</span> df <span class="token operator">=</span> <span class="token number">48</span><span class="token punctuation">,</span> p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">1.258e-08</span>  <span class="token comment">## 这里是小于0.05的,说明相关</span>
+alternative hypothesis<span class="token operator">:</span> true correlation is not equal to <span class="token number">0</span>
+<span class="token number">95</span> percent confidence interval<span class="token operator">:</span>  <span class="token comment">## 这是是置信区间,是统计学中重要的概念</span>
+ <span class="token number">0.5279280</span> <span class="token number">0.8207295</span>
+sample estimates<span class="token operator">:</span>
+      cor 
+<span class="token number">0.7029752</span>  <span class="token comment">## 这是是相关系数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h3><p>置信区间: confidence interval,是指由样本统计量所构造的总体参数的估计区间。在统计学中,一个概率样本的置信区间是对这个样本的某个总体参数的区间估计。置信区间展现的是这个参数的真实值有一定概率落在测量结果的周围的程度。置信区间给出的是被测量参数的测量值的可信程度。</p>
+<p>简单的说就是,光给出概率不行,还得给出概率发生的范围.</p>
+<p>psych 包中的 corr.test可以一次性计算多个变量之间的计算</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> corr.test<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span>  <span class="token comment">## 这里我的电脑加载不来</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>pcor.test 可用于偏相关的检验</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> x <span class="token operator">=</span> pcor<span class="token punctuation">(</span>c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span>cov<span class="token punctuation">(</span>state.x77<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">## 参数依次为,偏相关系数,控制的变量数,样本数</span>
+<span class="token comment">## 2,3,6三个变量,总共50个州</span>
+<span class="token operator">></span> pcor.test<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span>
+<span class="token operator">$</span>tval  <span class="token comment">## 学生t检验统计</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">2.476049</span>
+
+<span class="token operator">$</span>df  <span class="token comment">## 自由度</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">45</span>
+
+<span class="token operator">$</span>pvalue  <span class="token comment">## p值</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token number">0.01711252</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>分组数据的相关性检验,差异发生的概率,从而比较两个平均数的差异是否显著,主要用于样本含量小,一般小于30个的,总体标准差未知的正太分布数据.</p>
+<h3 id="t检验"><a href="#t检验" class="headerlink" title="t检验"></a>t检验</h3><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment">## 格式为 y~x,其中的y是一个数值型变量，x是一个二分型的变量</span>
+<span class="token operator">></span> ?t.test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">></span> library<span class="token punctuation">(</span>MASS<span class="token punctuation">)</span>
+<span class="token operator">></span> t.test<span class="token punctuation">(</span>Prob <span class="token operator">~</span> So<span class="token punctuation">,</span>data <span class="token operator">=</span> UScrime<span class="token punctuation">)</span>
+
+	Welch Two Sample t<span class="token operator">-</span>test
+
+data<span class="token operator">:</span>  Prob by So
+t <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">3.8954</span><span class="token punctuation">,</span> df <span class="token operator">=</span> <span class="token number">24.925</span><span class="token punctuation">,</span> p<span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">0.0006506</span>
+alternative hypothesis<span class="token operator">:</span> true difference <span class="token keyword">in</span> means is not equal to <span class="token number">0</span>
+<span class="token number">95</span> percent confidence interval<span class="token operator">:</span>
+ <span class="token operator">-</span><span class="token number">0.03852569</span> <span class="token operator">-</span><span class="token number">0.01187439</span>
+sample estimates<span class="token operator">:</span>
+mean <span class="token keyword">in</span> group <span class="token number">0</span> mean <span class="token keyword">in</span> group <span class="token number">1</span> 
+     <span class="token number">0.03851265</span>      <span class="token number">0.06371269</span> 
+<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="非参数检验-方差未知"><a href="#非参数检验-方差未知" class="headerlink" title="非参数检验 方差未知"></a>非参数检验 方差未知</h3><p>非参数检验,在总体方差未知或知道甚少的情况下,利用样本数据对总体分布形态等进行推断的方法。由于非参数检验方法在推断过程中不涉及有关总体分布的参数,因而得名为”非参数”检验</p>
+<h3 id="参数检验"><a href="#参数检验" class="headerlink" title="参数检验"></a>参数检验</h3><p>参数检验,是在<strong>总体分布形式已知</strong>的情况下,对总体分布的参数如均值、方差等进行推断的方法。也就是数据分布已知比如满足正态分布。</p>
+<h2 id="49-绘图函数"><a href="#49-绘图函数" class="headerlink" title="49-绘图函数"></a>49-绘图函数</h2><p>R中四大作图函数</p>
+<ol>
+<li>基础绘图函数（graphics）默认加载</li>
+<li>lattice包</li>
+<li>ggplot2包</li>
+<li>grid包</li>
+</ol>
+<h3 id="基础绘图包"><a href="#基础绘图包" class="headerlink" title="基础绘图包"></a>基础绘图包</h3><p>常用的函数</p>
+<ul>
+<li>arrows 箭头函数</li>
+<li>hist 直方图</li>
+<li>stars 形状图</li>
+<li>pie 饼图</li>
+<li>polygon 多边形图</li>
+</ul>
+<p>查看展示内容</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> demo<span class="token punctuation">(</span>graphics<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>R基础绘图系统分高级绘图和低级绘图，高级绘图可以一步到位。</p>
+<ul>
+<li>散点图：x和y两个坐标数据</li>
+<li>直方图：因子</li>
+<li>热力图：数据矩阵</li>
+<li>要做到看到一个图形就能知道是用那个数据，那个函数做出来</li>
+</ul>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> plot<span class="token punctuation">(</span>women<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>R中的S3系统指属性，泛型函数，方法</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> methods<span class="token punctuation">(</span>plot<span class="token punctuation">)</span>
+<span class="token operator">></span> methods<span class="token punctuation">(</span>summary<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="par函数"><a href="#par函数" class="headerlink" title="par函数"></a>par函数</h3><p>par可以对绘图函数进行设置</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> plot<span class="token punctuation">(</span>as.factor<span class="token punctuation">(</span>mtcars<span class="token operator">$</span>cyl<span class="token punctuation">)</span><span class="token punctuation">,</span>col <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token string">"red"</span><span class="token punctuation">,</span><span class="token string">"green"</span><span class="token punctuation">,</span><span class="token string">"blue"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<!--<img src="https://s1.ax1x.com/2020/06/10/t7QYrj.png" alt="t7QYrj.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/10/t7QYrj.png" alt="t7QYrj.png"></p>
+<h2 id="50-自定义函数"><a href="#50-自定义函数" class="headerlink" title="50-自定义函数"></a>50-自定义函数</h2><p>编写函数就是为了减少重复代码的书写</p>
+<p>在R中直接数据函数名，不输入括号就能直接看到源代码</p>
+<h3 id="函数名称"><a href="#函数名称" class="headerlink" title="函数名称"></a>函数名称</h3><ol>
+<li>函数命名与功能相关</li>
+<li>可以是字母和数字的组合，但必须是字母开头</li>
+</ol>
+<p>一些编程知识</p>
+<h2 id="51-R数据分析实战"><a href="#51-R数据分析实战" class="headerlink" title="51-R数据分析实战"></a>51-R数据分析实战</h2><ul>
+<li>小麦产量案例</li>
+<li>药物实验</li>
+<li>社会科学，失业率，犯罪率，</li>
+<li>量化投资产业</li>
+<li>一些反面的教材</li>
+</ul>
+<h2 id="52-线性回归（一）"><a href="#52-线性回归（一）" class="headerlink" title="52-线性回归（一）"></a>52-线性回归（一）</h2><p>回归regression ,通常指那些用一个或多个预测变量,也称自变量或解释变量,来预测响应变量,也称为因变量、效标变量或结果变量的方法。</p>
+<p>通过解释变量来预测响应变量</p>
+<p>人话就是根据很多数据的规律，找到这个数据改在的地方，回归到它本来的地方，</p>
+<h3 id="回归案例"><a href="#回归案例" class="headerlink" title="回归案例"></a>回归案例</h3><ol>
+<li>锻炼时间与消耗卡路里之间是什么关系?</li>
+<li>是直线关系还是曲线关系?</li>
+<li>卡路里消耗到某个点后,锻炼是否还有效果?</li>
+<li>对年轻人和老人影响一致吗?</li>
+<li>对男性和女性影响一致吗?</li>
+<li>对肥胖的人和苗条的人影响一致吗?</li>
+</ol>
+<h3 id="回归分析类型"><a href="#回归分析类型" class="headerlink" title="回归分析类型"></a>回归分析类型</h3><!--<img src="https://s1.ax1x.com/2020/06/10/t7aYVS.png" alt="t7aYVS.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/10/t7aYVS.png" alt="t7aYVS.png"></p>
+<h4 id="R表达式中常用的符号"><a href="#R表达式中常用的符号" class="headerlink" title="R表达式中常用的符号"></a>R表达式中常用的符号</h4><!--<img src="https://s1.ax1x.com/2020/06/10/t7des0.png" alt="t7des0.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/10/t7des0.png" alt="t7des0.png"></p>
+<h3 id="普通最小而成回归法"><a href="#普通最小而成回归法" class="headerlink" title="普通最小而成回归法"></a>普通最小而成回归法</h3><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?lm
+<span class="token operator">></span> fit <span class="token operator">=</span> lm<span class="token punctuation">(</span>data <span class="token operator">=</span> women<span class="token punctuation">,</span>weight<span class="token operator">~</span>height<span class="token punctuation">)</span>
+<span class="token operator">></span> fit
+
+Call<span class="token operator">:</span>
+lm<span class="token punctuation">(</span>formula <span class="token operator">=</span> weight <span class="token operator">~</span> height<span class="token punctuation">,</span> data <span class="token operator">=</span> women<span class="token punctuation">)</span>
+
+Coefficients<span class="token operator">:</span>  <span class="token comment">## 第一个为截距值，第二个是系数值</span>
+<span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span>       height  
+     <span class="token operator">-</span><span class="token number">87.52</span>         <span class="token number">3.45</span> 
+
+<span class="token operator">></span> summary<span class="token punctuation">(</span>fit<span class="token punctuation">)</span>
+
+Call<span class="token operator">:</span>  <span class="token comment">## 这里列出回归的公式</span>
+lm<span class="token punctuation">(</span>formula <span class="token operator">=</span> weight <span class="token operator">~</span> height<span class="token punctuation">,</span> data <span class="token operator">=</span> women<span class="token punctuation">)</span> 
+
+Residuals<span class="token operator">:</span>  <span class="token comment">## 残差,真实值和预测值之间的差，如果残差全是0，那就是线性方程</span>
+    Min      <span class="token number">1</span>Q  Median      <span class="token number">3</span>Q     Max 
+<span class="token operator">-</span><span class="token number">1.7333</span> <span class="token operator">-</span><span class="token number">1.1333</span> <span class="token operator">-</span><span class="token number">0.3833</span>  <span class="token number">0.7417</span>  <span class="token number">3.1167</span> 
+
+Coefficients<span class="token operator">:</span>  <span class="token comment">## 系数项，intrecept为截距项，Estimate是系数</span>
+             Estimate Std. Error t value Pr<span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">|</span>t<span class="token operator">|</span><span class="token punctuation">)</span>   <span class="token comment">## 这里的pr就是p值</span>
+<span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token number">87.51667</span>    <span class="token number">5.93694</span>  <span class="token operator">-</span><span class="token number">14.74</span> <span class="token number">1.71e-09</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+height        <span class="token number">3.45000</span>    <span class="token number">0.09114</span>   <span class="token number">37.85</span> <span class="token number">1.09e-14</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+Signif. codes<span class="token operator">:</span>  <span class="token number">0</span> ‘<span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.001</span> ‘<span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.01</span> ‘<span class="token operator">*</span>’ <span class="token number">0.05</span> ‘.’ <span class="token number">0.1</span> ‘ ’ <span class="token number">1</span>
+
+Residual standard error<span class="token operator">:</span> <span class="token number">1.525</span> on <span class="token number">13</span> degrees of freedom
+Multiple R<span class="token operator">-</span>squared<span class="token operator">:</span>  <span class="token number">0.991</span><span class="token punctuation">,</span>	Adjusted R<span class="token operator">-</span>squared<span class="token operator">:</span>  <span class="token number">0.9903</span>   <span class="token comment">## 表示这个模型课程解释多少比例的数据</span>
+F<span class="token operator">-</span>statistic<span class="token operator">:</span>  <span class="token number">1433</span> on <span class="token number">1</span> and <span class="token number">13</span> DF<span class="token punctuation">,</span>  p<span class="token operator">-</span>value<span class="token operator">:</span> <span class="token number">1.091e-14</span>  <span class="token comment">## F统计量，p值来衡量，越小越好，越显著。大于0.05时不适用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="53-线性回归（二）"><a href="#53-线性回归（二）" class="headerlink" title="53-线性回归（二）"></a>53-线性回归（二）</h2><p>线性回归常用函数</p>
+<!--<img src="https://s1.ax1x.com/2020/06/10/t7DVtU.png" alt="t7DVtU.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/10/t7DVtU.png" alt="t7DVtU.png"></p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> plot<span class="token punctuation">(</span>fit<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>会生成四幅图,分别时残差拟合图,正太QQ图,大小位列图,残差影响图</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> plot<span class="token punctuation">(</span>women<span class="token punctuation">)</span>
+<span class="token operator">></span> abline<span class="token punctuation">(</span>fit<span class="token punctuation">)</span>  <span class="token comment">## 这样就可以在原图上画出回归直线,abline只适用于直线</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="多项式回归-可以更好的拟合数据"><a href="#多项式回归-可以更好的拟合数据" class="headerlink" title="多项式回归,可以更好的拟合数据"></a>多项式回归,可以更好的拟合数据</h3><p>注意公式,</p>
+<p>至于什么时候加,要根据你自己对数据的理解不断尝试,</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> fit2 <span class="token operator">=</span> lm<span class="token punctuation">(</span>data <span class="token operator">=</span> women<span class="token punctuation">,</span>weight<span class="token operator">~</span>height<span class="token operator">+</span>I<span class="token punctuation">(</span>height<span class="token operator">^</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">></span> fit2
+<span class="token operator">></span> summary<span class="token punctuation">(</span>fit2<span class="token punctuation">)</span>  <span class="token comment">## 其中的解释更好</span>
+<span class="token operator">></span> plot<span class="token punctuation">(</span>women<span class="token punctuation">)</span>
+<span class="token operator">></span> abline<span class="token punctuation">(</span>fit<span class="token punctuation">)</span>
+<span class="token comment">## 第一个参数时横坐标的数值,第二个参数时根据拟合曲线得出的对应值</span>
+<span class="token operator">></span> lines<span class="token punctuation">(</span>women<span class="token operator">$</span>height<span class="token punctuation">,</span>fitted<span class="token punctuation">(</span>fit2<span class="token punctuation">)</span><span class="token punctuation">,</span>col <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">)</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<!--<img src="https://s1.ax1x.com/2020/06/11/t7s3WD.png" alt="t7s3WD.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/t7s3WD.png" alt="t7s3WD.png"></p>
+<h2 id="54-多元线性回归"><a href="#54-多元线性回归" class="headerlink" title="54-多元线性回归"></a>54-多元线性回归</h2><p>当预测变量不止一个时，就变成了多元线性回归，相当于求解多元方程，难得时有些变量权重不一样，有些很大有些很小</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> fir <span class="token operator">=</span> lm<span class="token punctuation">(</span>data <span class="token operator">=</span> states<span class="token punctuation">,</span>Murder <span class="token operator">~</span> Population<span class="token operator">+</span>Illiteracy<span class="token operator">+</span>Income<span class="token operator">+</span>Frost<span class="token punctuation">)</span>
+<span class="token operator">></span> summary<span class="token punctuation">(</span>fir<span class="token punctuation">)</span>
+Call<span class="token operator">:</span>
+lm<span class="token punctuation">(</span>formula <span class="token operator">=</span> Murder <span class="token operator">~</span> Population <span class="token operator">+</span> Illiteracy <span class="token operator">+</span> Income <span class="token operator">+</span> Frost<span class="token punctuation">,</span> 
+    data <span class="token operator">=</span> states<span class="token punctuation">)</span>
+
+Residuals<span class="token operator">:</span>
+    Min      <span class="token number">1</span>Q  Median      <span class="token number">3</span>Q     Max 
+<span class="token operator">-</span><span class="token number">4.7960</span> <span class="token operator">-</span><span class="token number">1.6495</span> <span class="token operator">-</span><span class="token number">0.0811</span>  <span class="token number">1.4815</span>  <span class="token number">7.6210</span> 
+
+Coefficients<span class="token operator">:</span>
+             Estimate Std. Error t value Pr<span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">|</span>t<span class="token operator">|</span><span class="token punctuation">)</span>    
+<span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span> <span class="token number">1.235e+00</span>  <span class="token number">3.866e+00</span>   <span class="token number">0.319</span>   <span class="token number">0.7510</span>    
+Population  <span class="token number">2.237e-04</span>  <span class="token number">9.052e-05</span>   <span class="token number">2.471</span>   <span class="token number">0.0173</span> <span class="token operator">*</span>  
+Illiteracy  <span class="token number">4.143e+00</span>  <span class="token number">8.744e-01</span>   <span class="token number">4.738</span> <span class="token number">2.19e-05</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>  <span class="token comment">## 可以看到与文盲率相关性很大</span>
+Income      <span class="token number">6.442e-05</span>  <span class="token number">6.837e-04</span>   <span class="token number">0.094</span>   <span class="token number">0.9253</span>    
+Frost       <span class="token number">5.813e-04</span>  <span class="token number">1.005e-02</span>   <span class="token number">0.058</span>   <span class="token number">0.9541</span>    
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+Signif. codes<span class="token operator">:</span>  <span class="token number">0</span> ‘<span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.001</span> ‘<span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.01</span> ‘<span class="token operator">*</span>’ <span class="token number">0.05</span> ‘.’ <span class="token number">0.1</span> ‘ ’ <span class="token number">1</span>
+
+Residual standard error<span class="token operator">:</span> <span class="token number">2.535</span> on <span class="token number">45</span> degrees of freedom
+Multiple R<span class="token operator">-</span>squared<span class="token operator">:</span>  <span class="token number">0.567</span><span class="token punctuation">,</span>	Adjusted R<span class="token operator">-</span>squared<span class="token operator">:</span>  <span class="token number">0.5285</span> 
+F<span class="token operator">-</span>statistic<span class="token operator">:</span> <span class="token number">14.73</span> on <span class="token number">4</span> and <span class="token number">45</span> DF<span class="token punctuation">,</span>  p<span class="token operator">-</span>value<span class="token operator">:</span> <span class="token number">9.133e-08</span>
+
+<span class="token comment">## 根据系数项和截距项就可以写出方程</span>
+<span class="token operator">></span> coef<span class="token punctuation">(</span>fir<span class="token punctuation">)</span>
+ <span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span>   Population   Illiteracy       Income        Frost 
+<span class="token number">1.2345634112</span> <span class="token number">0.0002236754</span> <span class="token number">4.1428365903</span> <span class="token number">0.0000644247</span> <span class="token number">0.0005813055</span>     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="逐步回归"><a href="#逐步回归" class="headerlink" title="逐步回归"></a>逐步回归</h3><p>多个模型之间的关系,一次添加一个或者减少一个,直到模型不变</p>
+<h2 id="55-回归诊断"><a href="#55-回归诊断" class="headerlink" title="55-回归诊断"></a>55-回归诊断</h2><p>诊断要做的</p>
+<ul>
+<li>这个模型是否是最佳模型？</li>
+<li>模型多大程度满足OLS模型的统计假设?</li>
+<li>模型是否经得起更多数据的检验?</li>
+<li>如果拟合出来的模型指标不好,该如何继续下去?</li>
+</ul>
+<h3 id="满足OLS模型统计-只有满足这些条件才可以用lm函数进行拟合"><a href="#满足OLS模型统计-只有满足这些条件才可以用lm函数进行拟合" class="headerlink" title="满足OLS模型统计,只有满足这些条件才可以用lm函数进行拟合"></a>满足OLS模型统计,只有满足这些条件才可以用lm函数进行拟合</h3><ol>
+<li>正态性:对于固定的自变量值,因变量值成正态分布。</li>
+<li>独立性:因变量之间相互独立。</li>
+<li>线性:因变量与自变量之间为线性相关</li>
+<li>同方差性:因变量的方差不随自变量的水平不同而变化。也可称作不变方差。</li>
+</ol>
+<p>分别时残差拟合图,正太QQ图,大小位列图,残差影响图,查阅资料看下这些图的作用</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> fit <span class="token operator">=</span> lm<span class="token punctuation">(</span>data <span class="token operator">=</span> women<span class="token punctuation">,</span> weight<span class="token operator">~</span>height<span class="token punctuation">)</span>
+<span class="token operator">></span> par<span class="token punctuation">(</span>mfrow<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">## 同时显示四幅图</span>
+<span class="token operator">></span> plot<span class="token punctuation">(</span>fit<span class="token punctuation">)</span>
+<span class="token comment">## 出来的四幅图就是来评价这些条件的</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="抽样法验证"><a href="#抽样法验证" class="headerlink" title="抽样法验证"></a>抽样法验证</h3><ol>
+<li>数据集中有1000个样本,随机抽取500个数据进行回归分析;</li>
+<li>模型建好之后,利用predict函数,对剩余500个样本进行预测,比较残差值;श,接入入採人人</li>
+<li>如果预测准确,说明模型可以,否则就需要调整模型。</li>
+</ol>
+<h2 id="56-方差分析-一"><a href="#56-方差分析-一" class="headerlink" title="56-方差分析(一)"></a>56-方差分析(一)</h2><p>方差分析,称为Analysis of Variance ,简称ANOVA,也称为“变异数分析” ,用于两个及两个以上样本均数差别的显著性检验。从广义上来讲,方差分析也属于回归分析的一种。只不过线性回归的因变量一般是连续型变量。而当自变量是因子时,研究关注的重点通常会从预测转向不同组之间差异的比较。这就是方差分析。</p>
+<h3 id="R中因子的应用"><a href="#R中因子的应用" class="headerlink" title="R中因子的应用"></a>R中因子的应用</h3><ul>
+<li>计算频数</li>
+<li>独立性检验</li>
+<li>相关性检验</li>
+<li>方差分析</li>
+<li>主成分分析</li>
+<li>因子分析</li>
+</ul>
+<h3 id="方差分析的种类"><a href="#方差分析的种类" class="headerlink" title="方差分析的种类"></a>方差分析的种类</h3><ol>
+<li>单因素方差分析ANOVA (组内,组间)</li>
+<li>双因素方差分析ANOVA</li>
+<li>协方差分析ANCOVA</li>
+<li>多元方差分析MANOVA</li>
+<li>多元方差分析MANCOVA</li>
+</ol>
+<h3 id="顺序很重要"><a href="#顺序很重要" class="headerlink" title="顺序很重要"></a>顺序很重要</h3><!--<img src="https://s1.ax1x.com/2020/06/11/tbFPCd.png" alt="tbFPCd.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/tbFPCd.png" alt="tbFPCd.png"></p>
+<h2 id="57-方差分析-二"><a href="#57-方差分析-二" class="headerlink" title="57-方差分析(二)"></a>57-方差分析(二)</h2><p>方差发案例,方差分析主要是看F值和P值</p>
+<h3 id="单因素方差分析"><a href="#单因素方差分析" class="headerlink" title="单因素方差分析"></a>单因素方差分析</h3><p>降低胆固醇药物的五种治疗方法的数据</p>
+<p>没听懂,这里老师讲的莫名其妙的,可以查资料寻找方法</p>
+<h3 id="协方差分析"><a href="#协方差分析" class="headerlink" title="协方差分析"></a>协方差分析</h3><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?litter
+<span class="token operator">></span> attach<span class="token punctuation">(</span>litter<span class="token punctuation">)</span>
+<span class="token comment">## 因变量werght,协变量gesttime,自变量dose</span>
+<span class="token operator">></span> fit3 <span class="token operator">=</span> avo<span class="token punctuation">(</span>weight <span class="token operator">~</span> gesttime<span class="token operator">+</span>dose<span class="token punctuation">,</span>data <span class="token operator">=</span> litter<span class="token punctuation">)</span>
+<span class="token operator">></span> summary<span class="token punctuation">(</span>fit3<span class="token punctuation">)</span>
+            Df Sum Sq Mean Sq F value  Pr<span class="token punctuation">(</span><span class="token operator">></span>F<span class="token punctuation">)</span>   
+gesttime     <span class="token number">1</span>  <span class="token number">134.3</span>  <span class="token number">134.30</span>   <span class="token number">8.049</span> <span class="token number">0.00597</span> <span class="token operator">*</span><span class="token operator">*</span>  <span class="token comment">## 怀孕时间,和体重</span>
+dose         <span class="token number">3</span>  <span class="token number">137.1</span>   <span class="token number">45.71</span>   <span class="token number">2.739</span> <span class="token number">0.04988</span> <span class="token operator">*</span>   <span class="token comment">## 计量与体重</span>
+Residuals   <span class="token number">69</span> <span class="token number">1151.3</span>   <span class="token number">16.69</span>                   
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+Signif. codes<span class="token operator">:</span>  
+<span class="token number">0</span> ‘<span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.001</span> ‘<span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.01</span> ‘<span class="token operator">*</span>’ <span class="token number">0.05</span> ‘.’ <span class="token number">0.1</span> ‘ ’ <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="双因素分析案例"><a href="#双因素分析案例" class="headerlink" title="双因素分析案例"></a>双因素分析案例</h3><p>橙汁和维生素c的为食,60只豚鼠,牙齿的生长</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?ToothGrowth
+<span class="token operator">></span> attach<span class="token punctuation">(</span>ToothGrowth<span class="token punctuation">)</span>
+<span class="token operator">></span> xtabs<span class="token punctuation">(</span><span class="token operator">~</span>supp<span class="token operator">+</span>dose<span class="token punctuation">)</span>
+    dose
+supp <span class="token number">0.5</span>  <span class="token number">1</span>  <span class="token number">2</span>
+  OJ  <span class="token number">10</span> <span class="token number">10</span> <span class="token number">10</span>
+  VC  <span class="token number">10</span> <span class="token number">10</span> <span class="token number">10</span>
+<span class="token operator">></span> dose1 <span class="token operator">=</span> factor<span class="token punctuation">(</span>ToothGrowth<span class="token operator">$</span>dose<span class="token punctuation">)</span>  <span class="token comment">## 讲dose转化为因子</span>
+<span class="token operator">></span> fit <span class="token operator">=</span> aov<span class="token punctuation">(</span>data <span class="token operator">=</span> ToothGrowth<span class="token punctuation">,</span>len<span class="token operator">~</span>supp<span class="token operator">*</span>dose1<span class="token punctuation">)</span>
+<span class="token operator">></span> summary<span class="token punctuation">(</span>fit<span class="token punctuation">)</span>
+            Df Sum Sq Mean Sq F value   Pr<span class="token punctuation">(</span><span class="token operator">></span>F<span class="token punctuation">)</span>    
+supp         <span class="token number">1</span>  <span class="token number">205.4</span>   <span class="token number">205.4</span>  <span class="token number">15.572</span> <span class="token number">0.000231</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>  
+<span class="token comment">## 说明为食方法对牙齿的生长有影响,</span>
+dose1        <span class="token number">2</span> <span class="token number">2426.4</span>  <span class="token number">1213.2</span>  <span class="token number">92.000</span>  <span class="token operator">&lt;</span> <span class="token number">2e-16</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+<span class="token comment">## 说明为食计量对牙齿的生长也有影响</span>
+supp<span class="token operator">:</span>dose1   <span class="token number">2</span>  <span class="token number">108.3</span>    <span class="token number">54.2</span>   <span class="token number">4.107</span> <span class="token number">0.021860</span> <span class="token operator">*</span>  
+Residuals   <span class="token number">54</span>  <span class="token number">712.1</span>    <span class="token number">13.2</span>                     
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+Signif. codes<span class="token operator">:</span>  
+<span class="token number">0</span> ‘<span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.001</span> ‘<span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.01</span> ‘<span class="token operator">*</span>’ <span class="token number">0.05</span> ‘.’ <span class="token number">0.1</span> ‘ ’ <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>看不懂列的公式了,,,</p>
+<h2 id="58-功效分析"><a href="#58-功效分析" class="headerlink" title="58-功效分析"></a>58-功效分析</h2><p>在这里条论下数据分析中应该使用多少的样本,如果样本少,p值小也是不可信.</p>
+<p>在给定的置信度和概率下计算出所要的样本量,这就是功效分析了</p>
+<p>功效分析, power analysis ,可以帮助在给定置信度的情况下,判断检测到给定效应值时所需的样本量。反过来,它也可以在给定置信度水平情况下,计算在某样本量内能检测到给定效应值的概率。</p>
+<h3 id="功效分析函数"><a href="#功效分析函数" class="headerlink" title="功效分析函数"></a>功效分析函数</h3><!--<img src="https://s1.ax1x.com/2020/06/11/tbaR2j.png" alt="tbaR2j.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/tbaR2j.png" alt="tbaR2j.png"></p>
+<h3 id="功效分析理论基础"><a href="#功效分析理论基础" class="headerlink" title="功效分析理论基础"></a>功效分析理论基础</h3><!--<img src="https://s1.ax1x.com/2020/06/11/tbajMR.png" alt="tbajMR.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/tbajMR.png" alt="tbajMR.png"><br>I型错误就是假阳性,II型错误就是假阴性</p>
+<ol>
+<li>样本大小指的是实验设计中每种条件/组中观测的数目。</li>
+<li>显著性水平(也称为alpha)由型错误的概率来定义。也可以把它看做是发现效应不发生的概率。</li>
+<li>功效通过减去1型错误的概率来定义。我们可以把它看做是真实效应发生的概率。</li>
+<li>效应值指的是在备择或研究假设下效应的量。效应值的表达式依赖于假设检验中使用的统计方法。</li>
+</ol>
+<h3 id="给出任意三种就可以推算第四种"><a href="#给出任意三种就可以推算第四种" class="headerlink" title="给出任意三种就可以推算第四种"></a>给出任意三种就可以推算第四种</h3><!--<img src="https://s1.ax1x.com/2020/06/11/tbwwHP.png" alt="tbwwHP.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/tbwwHP.png" alt="tbwwHP.png"></p>
+<h3 id="线性回归功效的案例"><a href="#线性回归功效的案例" class="headerlink" title="线性回归功效的案例"></a>线性回归功效的案例</h3><p>假设显著性在0.05,那么在90%的置信度的情况下,需要多少的受试者才能得到这样方差</p>
+<h4 id="pwr包"><a href="#pwr包" class="headerlink" title="pwr包"></a>pwr包</h4><p>pwr.f2.test,U为分子自由度,V为分母自由度,f2是效应值,sig.level为显著水平,power为功效水平</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> library<span class="token punctuation">(</span>pwr<span class="token punctuation">)</span>
+<span class="token operator">></span> pwr.f2.test<span class="token punctuation">(</span>u<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>sig.level <span class="token operator">=</span> <span class="token number">0.05</span><span class="token punctuation">,</span>power <span class="token operator">=</span> <span class="token number">0.9</span><span class="token punctuation">,</span>f2 <span class="token operator">=</span> <span class="token number">0.0769</span><span class="token punctuation">)</span>
+
+     Multiple regression power calculation 
+
+              u <span class="token operator">=</span> <span class="token number">3</span>
+              v <span class="token operator">=</span> <span class="token number">184.2426</span>
+             f2 <span class="token operator">=</span> <span class="token number">0.0769</span>
+      sig.level <span class="token operator">=</span> <span class="token number">0.05</span>
+          power <span class="token operator">=</span> <span class="token number">0.9</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="方差分析功效分析案例"><a href="#方差分析功效分析案例" class="headerlink" title="方差分析功效分析案例"></a>方差分析功效分析案例</h3><p>一个单因素方差分析,要达到0.9的功效,效应值为0.25,0.05的显著水平,计算每组的样本量</p>
+<p>pwr.anova.test  其中k为组的个数,n是各组的样本大小,也是要求的量,f是效应值</p>
+<pre class="line-numbers language-none"><code class="language-none">## 分两组,每组85个样本
+&gt; pwr.anova.test(k&#x3D;2,f&#x3D;0.25,sig.level &#x3D; 0.05,power &#x3D; 0.9)
+
+     Balanced one-way analysis of variance power calculation 
+
+              k &#x3D; 2
+              n &#x3D; 85.03128
+              f &#x3D; 0.25
+      sig.level &#x3D; 0.05
+          power &#x3D; 0.9
+
+NOTE: n is number in each group<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="59-广义线性模型"><a href="#59-广义线性模型" class="headerlink" title="59-广义线性模型"></a>59-广义线性模型</h2><p>在自己应用中很多数据都是无规则分布的,要通过分析来找到规律</p>
+<p>线性回归和方差分析都是基于正态分布的假设,广义线性模型扩展了线性模型的框架,它包含了非正态因变量的分析。</p>
+<p>可以用glm进行广义线性回归分析,与lm类似</p>
+<p>glm函数中重要的概率分布函数family,和相应的连接函数faction</p>
+<p>广义线性的拟合</p>
+<p>可用于的分布</p>
+<ul>
+<li>binomial(link = “logit”)  二分项分布</li>
+<li>gaussian(link = “identity”)</li>
+<li>Gamma(link = “inverse”)  </li>
+<li>inverse.gaussian(link = “1/mu^2”)</li>
+<li>poisson(link = “log”)</li>
+<li>quasi(link = “identity”, variance = “constant”)</li>
+<li>quasibinomial(link = “logit”)</li>
+<li>quasipoisson(link = “log”)</li>
+</ul>
+<h3 id="泊松回归"><a href="#泊松回归" class="headerlink" title="泊松回归"></a>泊松回归</h3><p>泊松回归是用来为计数资料和列联表建模的一种回归分析。泊松回归假设因变量是泊松分布,并假设它平均值的对数可被未知参数的线性组合建模。</p>
+<p>泊松分布可用于什么?</p>
+<p>这里对一个癫痫病的年龄和发病率之间的数据</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?glm
+<span class="token operator">></span> data<span class="token punctuation">(</span>breslow.dat<span class="token punctuation">,</span>package <span class="token operator">=</span> <span class="token string">"robust"</span><span class="token punctuation">)</span>  <span class="token comment">## 加载数据集</span>
+<span class="token operator">></span> attach<span class="token punctuation">(</span>breslow.dat<span class="token punctuation">)</span>  <span class="token comment">## 获取这个数据集</span>
+<span class="token operator">></span> fit4 <span class="token operator">=</span> glm<span class="token punctuation">(</span>data <span class="token operator">=</span> breslow.dat<span class="token punctuation">,</span>family <span class="token operator">=</span> poisson<span class="token punctuation">(</span>link <span class="token operator">=</span> <span class="token string">"log"</span><span class="token punctuation">,</span>sumY<span class="token operator">~</span>Base<span class="token operator">+</span>Trt<span class="token operator">+</span>Age<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">## sumY为因变量</span>
+
+<span class="token operator">></span> summary<span class="token punctuation">(</span>fit4<span class="token punctuation">)</span>
+
+Call<span class="token operator">:</span>
+glm<span class="token punctuation">(</span>formula <span class="token operator">=</span> sumY <span class="token operator">~</span> Base <span class="token operator">+</span> Trt <span class="token operator">+</span> Age<span class="token punctuation">,</span> family <span class="token operator">=</span> poisson<span class="token punctuation">(</span>link <span class="token operator">=</span> <span class="token string">"log"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    data <span class="token operator">=</span> breslow.dat<span class="token punctuation">)</span>
+
+Deviance Residuals<span class="token operator">:</span> 
+    Min       <span class="token number">1</span>Q   Median       <span class="token number">3</span>Q      Max  
+<span class="token operator">-</span><span class="token number">6.0569</span>  <span class="token operator">-</span><span class="token number">2.0433</span>  <span class="token operator">-</span><span class="token number">0.9397</span>   <span class="token number">0.7929</span>  <span class="token number">11.0061</span>  
+
+Coefficients<span class="token operator">:</span>
+               Estimate Std. Error z value Pr<span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">|</span>z<span class="token operator">|</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span>   <span class="token number">1.9488259</span>  <span class="token number">0.1356191</span>  <span class="token number">14.370</span>  <span class="token operator">&lt;</span> <span class="token number">2e-16</span>
+Base          <span class="token number">0.0226517</span>  <span class="token number">0.0005093</span>  <span class="token number">44.476</span>  <span class="token operator">&lt;</span> <span class="token number">2e-16</span>
+Trtprogabide <span class="token operator">-</span><span class="token number">0.1527009</span>  <span class="token number">0.0478051</span>  <span class="token operator">-</span><span class="token number">3.194</span>   <span class="token number">0.0014</span>
+Age           <span class="token number">0.0227401</span>  <span class="token number">0.0040240</span>   <span class="token number">5.651</span> <span class="token number">1.59e-08</span>
+                
+<span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span>  <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+Base         <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+Trtprogabide <span class="token operator">*</span><span class="token operator">*</span> 
+Age          <span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+Signif. codes<span class="token operator">:</span>  
+<span class="token number">0</span> ‘<span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.001</span> ‘<span class="token operator">*</span><span class="token operator">*</span>’ <span class="token number">0.01</span> ‘<span class="token operator">*</span>’ <span class="token number">0.05</span> ‘.’ <span class="token number">0.1</span> ‘ ’ <span class="token number">1</span>
+
+<span class="token punctuation">(</span>Dispersion parameter <span class="token keyword">for</span> poisson family taken to be <span class="token number">1</span><span class="token punctuation">)</span>
+
+    Null deviance<span class="token operator">:</span> <span class="token number">2122.73</span>  on <span class="token number">58</span>  degrees of freedom
+Residual deviance<span class="token operator">:</span>  <span class="token number">559.44</span>  on <span class="token number">55</span>  degrees of freedom
+AIC<span class="token operator">:</span> <span class="token number">850.71</span>
+
+Number of Fisher Scoring iterations<span class="token operator">:</span> <span class="token number">5</span>
+
+<span class="token operator">></span> coef<span class="token punctuation">(</span>fit4<span class="token punctuation">)</span>  <span class="token comment">## 显示个变量的系数,这里的截距没意义一</span>
+ <span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span>         Base Trtprogabide          Age 
+  <span class="token number">1.94882593</span>   <span class="token number">0.02265174</span>  <span class="token operator">-</span><span class="token number">0.15270095</span>   <span class="token number">0.02274013</span> 
+<span class="token operator">></span> exp<span class="token punctuation">(</span>coef<span class="token punctuation">(</span>fit4<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">## 因为是对数,取指数才与因变量成正比</span>
+ <span class="token punctuation">(</span>Intercept<span class="token punctuation">)</span>         Base Trtprogabide          Age 
+   <span class="token number">7.0204403</span>    <span class="token number">1.0229102</span>    <span class="token number">0.8583864</span>    <span class="token number">1.0230007</span>  <span class="token comment">## 这里相等于年龄长一岁,期望的癫痫病发病率将乘以1.023</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="60-Logistic回归"><a href="#60-Logistic回归" class="headerlink" title="60-Logistic回归"></a>60-Logistic回归</h2><p>当通过一系列连续型或类别型预测变量来预测二值型结果变量时Logistic回归是一个非常有用的工具。</p>
+<h3 id="logistic回归案例"><a href="#logistic回归案例" class="headerlink" title="logistic回归案例"></a>logistic回归案例</h3><p>根据危险因素预测某疾病发生的概率。例如,想探讨胃癌发生的危险因素,可以选择两组人群,一组是胃癌组,一组是非胃癌组,两组人群肯定有不同的体征和生活方式等。这里的因变量就是是否胃癌,即”是”或“否” ,为两分类变量,自变量就可以包括很多了,例如年龄、性别.饮食习惯、幽门螺杆菌感染等。自变量既可以是连续的,也可以是分类的。通过logistic回归分析,就可以大致了解到底哪些因素是胃癌的危险因素</p>
+<p>出轨数据集</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?Affairs
+<span class="token operator">></span> data<span class="token punctuation">(</span><span class="token string">"Affairs"</span><span class="token punctuation">,</span>package <span class="token operator">=</span> <span class="token string">"AER"</span><span class="token punctuation">)</span>
+<span class="token operator">></span> summary<span class="token punctuation">(</span>Affairs<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>老师操作猛如虎,,,看不懂</p>
+<h2 id="61-主成分分析"><a href="#61-主成分分析" class="headerlink" title="61-主成分分析"></a>61-主成分分析</h2><p>就是把很多不相干的数据去除,,降维处理</p>
+<h3 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h3><p>主成分分析, Principal Component Analysis,也简称为PCA,是一种数据降维技巧,它能将大量相关变量转化为一组很少的不相关变量,这些无关的变量称为主成分。主成分其实是对原始变量重新进行线性组合将原先众多具有一定相关性的指标,重新组合为一组的新的相互独立的综合指标。</p>
+<p>相当于聚类,有联系的聚在一组,成为独立的一簇</p>
+<p>相关性最大的为Pc1,第二的为a1x1,第三的为a2x2,,,a_k*X_k</p>
+<h3 id="R中自带的princomp可以进行主成分分析"><a href="#R中自带的princomp可以进行主成分分析" class="headerlink" title="R中自带的princomp可以进行主成分分析"></a>R中自带的princomp可以进行主成分分析</h3><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> ?princomp
+<span class="token operator">></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="利用pshch中的"><a href="#利用pshch中的" class="headerlink" title="利用pshch中的"></a>利用pshch中的</h3><h3 id="主成分分析与因子分析步骤"><a href="#主成分分析与因子分析步骤" class="headerlink" title="主成分分析与因子分析步骤"></a>主成分分析与因子分析步骤</h3><ol>
+<li>数据预处理;</li>
+<li>选择分析模型;</li>
+<li>判断要选择的主成分/因子数目;  ## 通过绘制碎石图</li>
+<li>选择主成分烟子;</li>
+<li>旋转主成分/因子;</li>
+<li>解释结果;</li>
+<li>计算主成分或因子得分。这步也是可选的。</li>
+</ol>
+<h3 id="对USJudgeRationgs数据集的预测"><a href="#对USJudgeRationgs数据集的预测" class="headerlink" title="对USJudgeRationgs数据集的预测"></a>对USJudgeRationgs数据集的预测</h3><!--<img src="https://s1.ax1x.com/2020/06/11/tqWhTg.png" alt="tqWhTg.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/tqWhTg.png" alt="tqWhTg.png"></p>
+<ol>
+<li>数据不需要处理了</li>
+<li>PCA分析</li>
+<li>判断要选择的主成分数目<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> library<span class="token punctuation">(</span>psych<span class="token punctuation">)</span>
+<span class="token operator">></span> fa.parallel<span class="token punctuation">(</span>USJudgeRatings<span class="token punctuation">,</span>fa <span class="token operator">=</span> <span class="token string">"pc"</span><span class="token punctuation">,</span>n.iter <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<p>碎石图什么原理,可以取研究下平行分析法</p>
+<!--<img src="https://s1.ax1x.com/2020/06/11/tqhAvq.png" alt="tqhAvq.png" border="0" />-->
+<p><img src="https://s1.ax1x.com/2020/06/11/tqhAvq.png" alt="tqhAvq.png"></p>
+<p>我的包加载不出来,奇怪的很</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token operator">></span> pc <span class="token operator">=</span> principal<span class="token punctuation">(</span>USJudgeRatings<span class="token punctuation">,</span>nfactors <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>rotate <span class="token operator">=</span> <span class="token string">"none"</span><span class="token punctuation">,</span>scores <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">theing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://theing.gitee.io/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-san/">https://theing.gitee.io/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-san/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">theing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">R语言数据分析</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'c9A3NJapA0GqVqdjIanTXvWV-gzGzoHsz',
+        appKey: 'siVPq9lDAGz8yClxLOmoMo6I',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '随便说点什么吧！'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/29/qi-ta-za-xiang/sheng-wu-xin-xi-xue-zhi-shi/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="生物信息学知识">
+                        
+                        <span class="card-title">生物信息学知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+喜欢一件事就去做吧，看看究竟是什么，未完待更。
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%85%B6%E4%BB%96/" class="post-category">
+                                    其他
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/">
+                        <span class="chip bg-color">生物信息</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/06/26/r-shu-ju-fen-xi/r-yu-yan-ru-men-yu-shu-ju-fen-xi-bi-ji-er/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="R语言与数据分析（二）">
+                        
+                        <span class="card-title">R语言与数据分析（二）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+喜欢一件事就去争取吧。
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                    数据分析
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">R语言数据分析</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" ">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="694251243"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.5'
+                   list-folded='false'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m12 l12 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">theing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <!-- <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> -->
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/fireworks.js"></script>
+
+</body>
+
+</html>
